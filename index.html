@@ -1,179 +1,953 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>渠道建设部 — 极简导航</title>
+	<meta name="generator" content="Hugo 0.147.4">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="viggo" />
+    <title>渠道建设部-内部文档导航</title>
+    <meta name="keywords" content="Webstack Hugo theme">
+    <meta name="description" content="Webstack Hugo theme">
     <link rel="shortcut icon" href="./assets/images/favicon.png">
-    <style>
-        :root {
-            --shade-0: #ffffff; --shade-1: #fafafa; --shade-2: #f5f5f5;
-            --shade-3: #e5e5e5; --shade-4: #d4d4d4; --shade-5: #a3a3a3;
-            --shade-6: #737373; --shade-7: #525252; --shade-8: #404040;
-            --shade-9: #262626; --shade-10: #171717; --shade-11: #0a0a0a;
-            --blue-50: #eff6ff; --blue-100: #dbeafe; --blue-200: #bfdbfe;
-            --blue-300: #93c5fd; --blue-400: #60a5fa; --blue-500: #3b82f6;
-            --blue-600: #2563eb; --blue-700: #1d4ed8; --blue-800: #1e40af;
-            --blue-900: #1e3a8a;
-            --bg-primary: var(--shade-0); --bg-secondary: var(--shade-1); --bg-tertiary: var(--shade-2);
-            --bg-hover: var(--blue-50); --border-light: var(--shade-3); --border-medium: var(--shade-4);
-            --text-primary: var(--shade-11); --text-secondary: var(--shade-7); --text-tertiary: var(--shade-5);
-            --accent: var(--blue-600); --accent-hover: var(--blue-700); --accent-light: var(--blue-50);
-            --accent-border: var(--blue-200); --link-color: var(--blue-600); --link-hover: var(--blue-800);
-            --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px;
-            --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px;
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --font-mono: 'SF Mono', Monaco, monospace;
-            --radius-sm: 2px; --radius-md: 4px; --radius-lg: 8px;
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        [data-theme="dark"] {
-            --bg-primary: var(--shade-11); --bg-secondary: #141414; --bg-tertiary: var(--shade-9);
-            --bg-hover: rgba(30, 58, 138, 0.15); --border-light: var(--shade-8); --border-medium: var(--shade-7);
-            --text-primary: var(--shade-1); --text-secondary: var(--shade-4); --text-tertiary: var(--shade-6);
-            --accent: var(--blue-400); --accent-hover: var(--blue-300); --accent-light: rgba(30, 58, 138, 0.3);
-            --accent-border: var(--blue-800); --link-color: var(--blue-400); --link-hover: var(--blue-300);
-        }
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
-        body { font-family: var(--font-sans); background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.6; letter-spacing: -0.01em; min-height: 100vh; transition: background-color var(--transition-slow), color var(--transition-slow); }
-        ::selection { background: var(--accent); color: white; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 var(--space-5); }
-        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-light); transition: all var(--transition-base); }
-        [data-theme="dark"] .header { background: rgba(10, 10, 10, 0.95); }
-        .header-content { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: var(--space-5); }
-        .logo { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; color: var(--text-primary); font-weight: 600; font-size: 1.25rem; letter-spacing: -0.02em; transition: opacity var(--transition-fast); }
-        .logo:hover { opacity: 0.8; }
-        .logo-mark { width: 32px; height: 32px; border: 2px solid var(--accent); color: var(--accent); position: relative; transition: all var(--transition-base); }
-        .logo:hover .logo-mark { transform: rotate(45deg); background: var(--accent-light); }
-        .logo-mark::after { content: ''; position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background: var(--accent); transform: translate(-50%, -50%); transition: all var(--transition-base); }
-        .logo:hover .logo-mark::after { transform: translate(-50%, -50%) scale(0.5); background: var(--accent-hover); }
-        .search-wrapper { flex: 1; max-width: 400px; position: relative; }
-        .search-input { width: 100%; height: 40px; padding: 0 var(--space-4) 0 var(--space-10); border: 1px solid var(--border-medium); border-radius: var(--radius-md); background: transparent; color: var(--text-primary); font-size: 0.9375rem; font-family: var(--font-sans); transition: all var(--transition-fast); outline: none; }
-        .search-input::placeholder { color: var(--text-tertiary); }
-        .search-input:hover { border-color: var(--text-secondary); }
-        .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
-        .search-icon { position: absolute; left: var(--space-3); top: 50%; transform: translateY(-50%); color: var(--text-tertiary); pointer-events: none; }
-        .search-shortcut { position: absolute; right: var(--space-3); top: 50%; transform: translateY(-50%); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-tertiary); padding: 2px 6px; border: 1px solid var(--border-light); border-radius: var(--radius-sm); pointer-events: none; }
-        .theme-toggle { width: 40px; height: 40px; border: 1px solid var(--border-medium); border-radius: var(--radius-md); background: transparent; color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); position: relative; }
-        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-        .theme-icon { position: absolute; transition: all var(--transition-base); }
-        .theme-icon.sun { opacity: 1; transform: scale(1); }
-        .theme-icon.moon { opacity: 0; transform: scale(0.5); }
-        [data-theme="dark"] .theme-icon.sun { opacity: 0; transform: scale(0.5); }
-        [data-theme="dark"] .theme-icon.moon { opacity: 1; transform: scale(1); }
-        .main { padding-top: 72px; min-height: 100vh; display: flex; flex-direction: column; }
-        .hero { padding: var(--space-9) 0 var(--space-7); text-align: center; border-bottom: 1px solid var(--border-light); }
-        .hero-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: var(--space-4); color: var(--text-primary); }
-        .hero-subtitle { font-size: 1.125rem; color: var(--text-secondary); font-weight: 400; max-width: 600px; margin: 0 auto; }
-        .hero-subtitle-accent { color: var(--accent); font-weight: 500; }
-        .category-nav { padding: var(--space-6) 0; display: flex; justify-content: center; gap: var(--space-2); flex-wrap: wrap; }
-        .category-btn { padding: var(--space-2) var(--space-4); border: 1px solid transparent; border-radius: 9999px; background: transparent; color: var(--text-secondary); font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all var(--transition-fast); font-family: var(--font-sans); }
-        .category-btn:hover { color: var(--accent); background: var(--accent-light); border-color: var(--accent-border); }
-        .category-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-light); font-weight: 600; }
-        .content { flex: 1; padding-bottom: var(--space-9); }
-        .section { margin-bottom: var(--space-8); }
-        .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: var(--space-5); padding-bottom: var(--space-3); border-bottom: 1px solid var(--border-light); }
-        .section-title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-family: var(--font-mono); }
-        .section-count { font-size: 0.75rem; color: var(--text-tertiary); font-family: var(--font-mono); }
-        .sites-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1px; background: var(--border-light); border: 1px solid var(--border-light); }
-        .site-card { background: var(--bg-primary); padding: var(--space-5); text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: var(--space-3); transition: all var(--transition-base); position: relative; overflow: hidden; }
-        .site-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); transform: scaleY(0); transition: transform var(--transition-base); }
-        .site-card:hover { background: var(--bg-secondary); }
-        .site-card:hover::before { transform: scaleY(1); }
-        .site-header { display: flex; align-items: center; gap: var(--space-3); }
-        .site-favicon { width: 40px; height: 40px; border: 1px solid var(--accent-border); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; background: var(--accent-light); color: var(--accent); flex-shrink: 0; transition: all var(--transition-fast); }
-        .site-card:hover .site-favicon { background: var(--accent); color: white; transform: scale(1.05); }
-        .site-info { flex: 1; min-width: 0; }
-        .site-name { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.01em; }
-        .site-url { font-size: 0.75rem; color: var(--link-color); font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color var(--transition-fast); }
-        .site-card:hover .site-url { color: var(--link-hover); }
-        .site-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .site-meta { display: flex; gap: var(--space-3); margin-top: auto; padding-top: var(--space-3); }
-        .site-tag { font-size: 0.6875rem; color: var(--accent); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 6px; background: var(--accent-light); border-radius: var(--radius-sm); }
-        .footer { border-top: 1px solid var(--border-light); padding: var(--space-6) 0; margin-top: auto; }
-        .footer-content { display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem; color: var(--text-tertiary); }
-        .footer-links { display: flex; gap: var(--space-5); }
-        .footer-link { color: var(--link-color); text-decoration: none; transition: all var(--transition-fast); position: relative; }
-        .footer-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width var(--transition-fast); }
-        .footer-link:hover { color: var(--link-hover); }
-        .footer-link:hover::after { width: 100%; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .section { animation: fadeIn 0.6s ease-out forwards; }
-        .section:nth-child(1) { animation-delay: 0.1s; }
-        .section:nth-child(2) { animation-delay: 0.2s; }
-        .section:nth-child(3) { animation-delay: 0.3s; }
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
-        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-        @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
-        .section.hidden { display: none; }
-        @media (max-width: 767px) {
-            .header-content { height: 64px; gap: var(--space-3); }
-            .search-wrapper { max-width: none; }
-            .search-shortcut { display: none; }
-            .hero { padding: var(--space-7) 0 var(--space-5); }
-            .sites-grid { grid-template-columns: 1fr; gap: 0; border: none; }
-            .site-card { border-bottom: 1px solid var(--border-light); }
-            .site-card::before { display: none; }
-            .category-nav { padding: var(--space-4) 0; gap: var(--space-2); }
-            .category-btn { padding: var(--space-2) var(--space-3); font-size: 0.8125rem; }
-            .footer-content { flex-direction: column; gap: var(--space-3); text-align: center; }
-        }
-    </style>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
+    <link rel="stylesheet" href="./assets/css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="./assets/css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/xenon-core.css">
+    <link rel="stylesheet" href="./assets/css/xenon-components.css">
+    <link rel="stylesheet" href="./assets/css/xenon-skins.css">
+    <link rel="stylesheet" href="./assets/css/nav.css">
+    <script src="./assets/js/jquery-1.11.1.min.js"></script>
+    
+    
+    
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?86cead3bcab6a1417189e6138d69262";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="mono.html" class="logo" aria-label="渠道建设部 首页">
-                    <div class="logo-mark" aria-hidden="true"></div>
-                    <span>渠道建设部</span>
-                </a>
-                <div class="search-wrapper">
-                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.35-4.35"></path>
-                    </svg>
-                    <input type="search" class="search-input" placeholder="搜索工具或平台..." aria-label="搜索站点" id="searchInput">
-                    <span class="search-shortcut">⌘K</span>
-                </div>
-                <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
-                    <svg class="theme-icon sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <svg class="theme-icon moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
+
+<body class="page-body">
+    
+    <div class="page-container">
+        <div class="sidebar-menu toggle-others fixed">
+            <div class="sidebar-menu-inner">
+                <header class="logo-env">
+                    
+                    <div class="logo">
+                        <a href="index.html" class="logo-expanded">
+                            <img src="./assets/images/logo@2x.png" width="100%" alt="" />
+                        </a>
+                        <a href="index.html" class="logo-collapsed">
+                            <img src="./assets/images/logo-collapsed@2x.png" width="40" alt="" />
+                        </a>
+                    </div>
+                    <div class="mobile-menu-toggle visible-xs">
+                        <a href="#" data-toggle="mobile-menu">
+                            <i class="fa-bars"></i>
+                        </a>
+                    </div>
+                </header>
+                
+                <ul id="main-menu" class="main-menu">
+                
+                    
+                    <li>
+                        <a>
+                            <i class="linecons-star"></i>
+                            <span class="title">数据与汇报</span>
+                        </a>
+                        <ul>
+                            
+                            <li>
+                                <a href="#59dd335c40f1fde615ed115c47a87d31" class="smooth">
+                                    <span class="title">汇报相关</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#1b7cba289aa851a64621b2f791769199" class="smooth">
+                                    <span class="title">数据统计</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a>
+                            <i class="linecons-doc"></i>
+                            <span class="title">素材创作</span>
+                        </a>
+                        <ul>
+                            
+                            <li>
+                                <a href="#c6d7d0954cea68f28dbd1558975cc728" class="smooth">
+                                    <span class="title">热点灵感</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#a8f145aaa330056657a530aa9f6befe4" class="smooth">
+                                    <span class="title">AIGC工具</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#4df45d6c537ec063e512bc9ac88efdbc" class="smooth">
+                                    <span class="title">UI制作</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a>
+                            <i class="linecons-lightbulb"></i>
+                            <span class="title">内容输出</span>
+                        </a>
+                        <ul>
+                            
+                            <li>
+                                <a href="#1b9a3a63dcffea72cc80378d2cbc9e5e" class="smooth">
+                                    <span class="title">新媒体平台</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#39e59f37dc93e340675ad0f3d255a3db" class="smooth">
+                                    <span class="title">分析工具</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a>
+                            <i class="linecons-thumbs-up"></i>
+                            <span class="title">广告投放</span>
+                        </a>
+                        <ul>
+                            
+                            <li>
+                                <a href="#e16c39d0d42c59b18a9fbcc6ca74dd42" class="smooth">
+                                    <span class="title">广告平台</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="#c1defc7451d79aa01a29d85ebd413040" class="smooth">
+                            <i class="linecons-user"></i>
+                            <span class="title">客户转化</span>
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a>
+                            <i class="linecons-pencil"></i>
+                            <span class="title">其他工具</span>
+                        </a>
+                        <ul>
+                            
+                            <li>
+                                <a href="#94cc0ce03f67cfd21faa788fa0959c70" class="smooth">
+                                    <span class="title">技术文档</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#0d98c74797e49d00bcc4c17c9d557a2b" class="smooth">
+                                    <span class="title">其他</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    
+                
+                <li>
+                    <a href="./about">
+                        <i class="linecons-heart"></i>
+                        <span class="tooltip-blue">关于本站</span>
+                        <span class="label label-Primary pull-right hidden-collapsed">♥︎</span>
+                    </a>
+                </li>
+                </ul>
             </div>
         </div>
-    </header>
-
-    <main class="main">
-        <div class="container">
-            <nav class="category-nav" aria-label="分类筛选">
-                <button class="category-btn active" data-category="all" aria-pressed="true">全部</button>
-                <button class="category-btn" data-category="data" aria-pressed="false">数据与汇报</button>
-                <button class="category-btn" data-category="content" aria-pressed="false">素材创作</button>
-                <button class="category-btn" data-category="output" aria-pressed="false">内容输出</button>
-                <button class="category-btn" data-category="ads" aria-pressed="false">广告投放</button>
-                <button class="category-btn" data-category="conversion" aria-pressed="false">客户转化</button>
-                <button class="category-btn" data-category="tools" aria-pressed="false">其他工具</button>
+        <div class="main-content">
+            <nav class="navbar user-info-navbar" role="navigation">
+                
+                
+                <ul class="user-info-menu left-links list-inline list-unstyled">
+                    <li class="hidden-sm hidden-xs">
+                        <a href="#" data-toggle="sidebar">
+                            <i class="fa-bars"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="user-info-menu right-links list-inline list-unstyled">
+<!--
+                    <li class="hidden-sm hidden-xs">
+                        <a href="https://github.com/iplaycode/webstack-hugo" target="_blank">
+                            <i class="fa-github"></i>   GitHub
+                        </a>
+                    </li>
+-->
+                </ul>
             </nav>
+                   
+    
+        
+            
+            
+            <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="59dd335c40f1fde615ed115c47a87d31"></i>汇报相关</h4>
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/365.kdocs.cn\/l\/ciEouBcuKM8Q', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://365.kdocs.cn/l/ciEouBcuKM8Q">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e8%8d%a3%e8%aa%89%e8%b5%84%e8%b4%a8.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>周报</strong>
+                                </div>
+                                <p class="overflowClip_2">周报共享文档每周五更新，用于事业部内部汇报</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/rpt.swhysc.com\/swhy\/main', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://rpt.swhysc.com/swhy/main">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e9%87%91%e8%9e%8d%e6%95%b0%e6%8d%ae.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>省心投</strong>
+                                </div>
+                                <p class="overflowClip_2">要挂公司VPN，可从VPN或统一身份认证平台进入</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/wpsplus.com\/join\/g885lde?invtoken=Q1lI55qETWlCb29r', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://wpsplus.com/join/g885lde?invtoken=Q1lI55qETWlCb29r">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e6%96%87%e6%a1%a3%e5%82%a8%e5%ad%98.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>其他</strong>
+                                </div>
+                                <p class="overflowClip_2">部门共享文件夹（前置条件：启用WPS企业账号）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br />
+            
+            
+            
+            <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="1b7cba289aa851a64621b2f791769199"></i>数据统计</h4>
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/365.kdocs.cn\/l\/cf2l5rEe2x7i', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://365.kdocs.cn/l/cdfr7GK4hivA">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e4%ba%ba%e8%84%b8%e8%af%86%e5%88%ab.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>内容运营-直播统计表</strong>
+                                </div>
+                                <p class="overflowClip_2">数据源更新和仪表盘编辑各司其职，切勿不必要的操作</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/365.kdocs.cn\/l\/ctFeOhXFwMnP', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://365.kdocs.cn/l/ctFeOhXFwMnP">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e6%96%87%e4%bb%b6%e5%a4%b9.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>内容运营-新媒体内容全量数据统计</strong>
+                                </div>
+                                <p class="overflowClip_2">新媒体发布内容汇总表</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/365.kdocs.cn\/l\/cc2YmfVEdfxs', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://doc.weixin.qq.com/sheet/e3_AbUAyAaaAPIZWP7YBSHSku0SbZVKV?scode=AAoApQewAAsI1Nxep9AbUAyAaaAPI&amp;tab=BB08J2">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e5%90%88%e4%bd%9c%e5%ae%a2%e6%88%b7.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>内容运营-小红书统计表</strong>
+                                </div>
+                                <p class="overflowClip_2">数据源更新和仪表盘编辑各司其职，切勿不必要的操作</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/365.kdocs.cn\/l\/cqAuMEs1OUV1', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://365.kdocs.cn/l/cc2YmfVEdfxs">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e6%95%b0%e6%8d%ae%e8%a1%a8%e5%8d%95.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>广告管理-纯广告素材统计表</strong>
+                                </div>
+                                <p class="overflowClip_2">广告素材和投放管理</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/365.kdocs.cn\/wo\/sl\/v13S6HmI', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://365.kdocs.cn/l/cvaveJIXcvQa">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e6%96%87%e6%a1%a3%e5%82%a8%e5%ad%98.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>小助手运营数据</strong>
+                                </div>
+                                <p class="overflowClip_2">小助手数据录入</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+            <br />
+            
+            
+        
+    
+        
+            
+            
+            <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="c6d7d0954cea68f28dbd1558975cc728"></i>热点灵感</h4>
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/pc1beyczus.feishu.cn\/base\/YR7qbKlvwaCL0Ws7VljcEVmsnF9?table=blkyxaxbYKV2U6lp', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://pc1beyczus.feishu.cn/base/YR7qbKlvwaCL0Ws7VljcEVmsnF9?table=blkyxaxbYKV2U6lp">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e9%a3%9e%e4%b9%a6.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>小工具-竞品内容分析</strong>
+                                </div>
+                                <p class="overflowClip_2">自建&#43;积累：飞书多维表格实现的竞品内容管理小工具</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/www.newrank.cn\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.newrank.cn/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e6%96%b0%e6%a6%9c.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>新榜</strong>
+                                </div>
+                                <p class="overflowClip_2">新媒体，找新榜</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/ad.xiaohongshu.com', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://ad.xiaohongshu.com">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e5%b0%8f%e7%ba%a2%e4%b9%a6.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>小红书聚光</strong>
+                                </div>
+                                <p class="overflowClip_2">让好产品自然发光</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/turbodesk.xfyun.cn\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://turbodesk.xfyun.cn/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e8%ae%af%e9%a3%9e%e6%98%9f%e7%81%ab-copy.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>讯飞绘文</strong>
+                                </div>
+                                <p class="overflowClip_2">选题、配图、成文，一站式创作，让内容运营更高效</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br />
+            
+            
+            
+            <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="a8f145aaa330056657a530aa9f6befe4"></i>AIGC工具</h4>
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/pc1beyczus.feishu.cn\/base\/EHrGbLkLiaPMQ3sApvCcTbb7nxf?from=from_copylink', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://pc1beyczus.feishu.cn/base/EHrGbLkLiaPMQ3sApvCcTbb7nxf?from=from_copylink">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e9%a3%9e%e4%b9%a6.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>小工具-小红书AI助手</strong>
+                                </div>
+                                <p class="overflowClip_2">自建&#43;积累：飞书多维表格实现的小红书改写小工具</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/www.doubao.com\/chat\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.doubao.com/chat/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e8%b1%86%e5%8c%85.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>全能工具-豆包</strong>
+                                </div>
+                                <p class="overflowClip_2">最接近GPT的全能AI产品，先把这个玩明白吧</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/know.swhysc.com\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://know.swhysc.com/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e5%a6%99%e7%ac%94.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>妙笔申花</strong>
+                                </div>
+                                <p class="overflowClip_2">公司大模型，创意参数调得偏低，找内容依据可以</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/openi.cn\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://openi.cn/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e7%ae%a1%e7%90%86%e6%8a%80%e6%9c%af.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>导航站-AI导航</strong>
+                                </div>
+                                <p class="overflowClip_2">导航站没啥用，但是有时间多了解下生产力工具也是好的</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br />
+            
+            
+            
+            <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="4df45d6c537ec063e512bc9ac88efdbc"></i>UI制作</h4>
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/swhyzq1972.qiye.gaoding.com\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://swhyzq1972.qiye.gaoding.com/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e7%a8%bf%e5%ae%9a%e5%ad%a6%e9%99%a2.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>稿定设计</strong>
+                                </div>
+                                <p class="overflowClip_2">一键搞定好设计</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/365.kdocs.cn\/l\/cgEmXEEslFvc', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://365.kdocs.cn/l/cqYZquMkYo4m">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e6%96%87%e6%a1%a3%e5%82%a8%e5%ad%98.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>UI需求与排期</strong>
+                                </div>
+                                <p class="overflowClip_2">UI设计师设计任务排期表</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br />
+            
+            
+        
+    
+        
+            
+            
+            <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="1b9a3a63dcffea72cc80378d2cbc9e5e"></i>新媒体平台</h4>
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/channels.weixin.qq.com\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://channels.weixin.qq.com/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e8%a7%86%e9%a2%91%e5%8f%b7.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>视频号助手</strong>
+                                </div>
+                                <p class="overflowClip_2">一站式服务，让创作更简单。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/mp.weixin.qq.com\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://mp.weixin.qq.com/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e5%85%ac%e4%bc%97%e5%8f%b7.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>微信公众服务平台</strong>
+                                </div>
+                                <p class="overflowClip_2">再小的个体，也有自己的品牌。（官方公众号、服务号、小程序管理平台）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/pro.xiaohongshu.com\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://pro.xiaohongshu.com/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e5%b0%8f%e7%ba%a2%e4%b9%a6.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>小红书专业号平台</strong>
+                                </div>
+                                <p class="overflowClip_2">专业身份，专享权益</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br />
+            
+            
+            
+            <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="39e59f37dc93e340675ad0f3d255a3db"></i>分析工具</h4>
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/pc1beyczus.feishu.cn\/base\/RmGfb0A85abQ18s7aX9cG1PSnGc?from=from_copylink', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://pc1beyczus.feishu.cn/base/RmGfb0A85abQ18s7aX9cG1PSnGc?from=from_copylink">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e6%95%b0%e6%8d%ae%e8%a1%a8%e5%8d%95.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>评论区分析</strong>
+                                </div>
+                                <p class="overflowClip_2">公域评论区分析</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br />
+            
+            
+        
+    
+        
+            
+            
+            <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="e16c39d0d42c59b18a9fbcc6ca74dd42"></i>广告平台</h4>
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/ad.qq.com\/atlas\/50252079\/overview\/index?tab=adgroup', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://ad.qq.com/atlas/50252079/overview/index?tab=adgroup">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e8%85%be%e8%ae%af%e5%b9%bf%e5%91%8a.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>腾讯广告（5025079）</strong>
+                                </div>
+                                <p class="overflowClip_2">发现新鲜有趣的产品</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/ad.xiaohongshu.com', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://ad.xiaohongshu.com">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e5%b0%8f%e7%ba%a2%e4%b9%a6.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>小红书聚光</strong>
+                                </div>
+                                <p class="overflowClip_2">让好产品自然发光</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/business.oceanengine.com\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://business.oceanengine.com/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e5%b7%a8%e9%87%8f%e5%bc%95%e6%93%8e.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>巨量引擎</strong>
+                                </div>
+                                <p class="overflowClip_2">一站掌握好生意</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/e.koubei.com\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://e.koubei.com/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e9%ab%98%e5%be%b7%e5%9c%b0%e5%9b%be.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>阿里本地通（含高德）</strong>
+                                </div>
+                                <p class="overflowClip_2">收款经营，一手掌握</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br />
+            
+            
+        
+    
+        
+            
+            <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="c1defc7451d79aa01a29d85ebd413040"></i>客户转化</h4>
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/admin.xiaoe-tech.com\/', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://admin.xiaoe-tech.com/">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e5%b0%8f%e9%b9%85%e9%80%9a.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>小鹅通</strong>
+                                </div>
+                                <p class="overflowClip_2">一分钟搭建你的专属知识平台</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/doc.weixin.qq.com\/sheet\/e3_AbUAyAaaAPI3wqZTysxT0WOezY5MO?scode=AAoApQewAAsCYBagen', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://doc.weixin.qq.com/sheet/e3_AbUAyAaaAPI3wqZTysxT0WOezY5MO?scode=AAoApQewAAsCYBagen">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e6%96%87%e4%bb%b6%e5%a4%b9.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>客户转化SOP</strong>
+                                </div>
+                                <p class="overflowClip_2">转化SOP第一稿，需不断更新</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br />
+            
+        
+    
+        
+            
+            
+            <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="94cc0ce03f67cfd21faa788fa0959c70"></i>技术文档</h4>
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/api-doc.xiaoe-tech.com\/recall_scene\/syn_user_info.html', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://api-doc.xiaoe-tech.com/recall_scene/syn_user_info.html">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e5%b0%8f%e9%b9%85%e9%80%9a.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>小鹅通API</strong>
+                                </div>
+                                <p class="overflowClip_2">小鹅通私域直播、付费课程的客户的接口和Mapping机制文档</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/ad-market.xiaohongshu.com\/docs-center?articleId=3180\u0026bizType=943', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://ad-market.xiaohongshu.com/docs-center?articleId=3180&amp;bizType=943">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/%e5%b0%8f%e7%ba%a2%e4%b9%a6.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>小红书API</strong>
+                                </div>
+                                <p class="overflowClip_2">小红书 Marketing API</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br />
+            
+            
+            
+            <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="0d98c74797e49d00bcc4c17c9d557a2b"></i>其他</h4>
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/cyhzzz.github.io\/shuzirendemo', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://cyhzzz.github.io/shuzirendemo">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/businessman.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>AI数字人demo</strong>
+                                </div>
+                                <p class="overflowClip_2">数字人demo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https:\/\/cyhzzz.github.io\/bokedemo', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://cyhzzz.github.io/bokedemo">
+                        <div class="xe-comment-entry">
+                            <div class="xe-user-img">
+                                <img data-src="assets/images/logos/assistant.png" class="lozad img-circle" width="40">
+                            </div>
+                            <div class="xe-comment">
+                                <div class="xe-user-name overflowClip_1">
+                                    <strong>AI音频播客demo</strong>
+                                </div>
+                                <p class="overflowClip_2">博客demo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br />
+            
+            
+        
+    
+            
+            
+            
+            
+            <footer class="main-footer sticky footer-type-1">
+                <div class="footer-inner">
+                    
+                    <div class="footer-text">
+                        &copy; 2025
+                        <a href=""><strong>陈元昊</strong></a> design by <a href="" target="_blank"><strong>Viggo</strong></a> themes by <a href="" target="_blank"><strong>iplaycode</strong></a>
+                        
+                    </div>
+                    
+                    <div class="go-up">
+                        <a href="#" rel="go-top">
+                            <i class="fa-angle-up"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+         
+         const observer = lozad();
+         observer.observe();
 
-            <section class="hero">
-                <h1 class="hero-title">渠道建设部</h1>
-                <p class="hero-subtitle">内部工具与资源导航，<span class="hero-subtitle-accent">单色美学</span>，专注效率</p>
-            </section>
+        $(document).on('click', '.has-sub', function(){
+            var _this = $(this)
+            if(!$(this).hasClass('expanded')) {
+               setTimeout(function(){
+                    _this.find('ul').attr("style","")
+               }, 300);
+              
+            } else {
+                $('.has-sub ul').each(function(id,ele){
+                    var _that = $(this)
+                    if(_this.find('ul')[0] != ele) {
+                        setTimeout(function(){
+                            _that.attr("style","")
+                        }, 300);
+                    }
+                })
+            }
+        })
+        $('.user-info-menu .hidden-sm').click(function(){
+            if($('.sidebar-menu').hasClass('collapsed')) {
+                $('.has-sub.expanded > ul').attr("style","")
+            } else {
+                $('.has-sub.expanded > ul').show()
+            }
+        })
+        $("#main-menu li ul li").click(function() {
+            $(this).siblings('li').removeClass('active'); 
+            $(this).addClass('active'); 
+        });
+        $("a.smooth").click(function(ev) {
+            ev.preventDefault();
 
-            <div class="content">
+            public_vars.$mainMenu.add(public_vars.$sidebarProfile).toggleClass('mobile-is-visible');
+            ps_destroy();
+            $("html, body").animate({
+                scrollTop: $($(this).attr("href")).offset().top - 30
+            }, {
+                duration: 500,
+                easing: "swing"
+            });
+        });
+        return false;
+    });
+
+    var href = "";
+    var pos = 0;
+    $("a.smooth").click(function(e) {
+        $("#main-menu li").each(function() {
+            $(this).removeClass("active");
+        });
+        $(this).parent("li").addClass("active");
+        e.preventDefault();
+        href = $(this).attr("href");
+        pos = $(href).position().top - 30;
+    });
+    </script>
+    
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/TweenMax.min.js"></script>
+    <script src="./assets/js/resizeable.js"></script>
+    <script src="./assets/js/joinable.js"></script>
+    <script src="./assets/js/xenon-api.js"></script>
+    <script src="./assets/js/xenon-toggles.js"></script>
+    
+    <script src="./assets/js/xenon-custom.js"></script>
+    <script src="./assets/js/lozad.js"></script>
+</body>
+
+</html>
