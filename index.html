@@ -53,10 +53,10 @@
         .header-content { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: var(--space-5); }
         .logo { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; color: var(--text-primary); font-weight: 600; font-size: 1.15rem; letter-spacing: -0.01em; transition: all var(--transition-fast); }
         .logo:hover { color: var(--accent); }
-        .logo-canvas { width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; transition: all var(--transition-base); }
-        .logo:hover .logo-canvas { transform: scale(1.05); }
+        .logo-svg { width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; transition: all var(--transition-base); }
+        .logo:hover .logo-svg { transform: scale(1.05) rotate(5deg); }
         .search-wrapper { flex: 1; max-width: 380px; position: relative; }
-        .search-input { width: 100%; height: 42px; padding: 0 var(--space-4) 0 var(--space-10); border: 1.5px solid var(--border-medium); border-radius: var(--radius-xl); background: var(--bg-secondary); color: var(--text-primary); font-size: 0.9rem; font-family: var(--font-sans); transition: all var(--transition-fast); outline: none; }
+        .search-input { width: 100%; height: 42px; padding: 0 var(--space-4) 0 40px; border: 1.5px solid var(--border-medium); border-radius: var(--radius-xl); background: var(--bg-secondary); color: var(--text-primary); font-size: 0.9rem; font-family: var(--font-sans); transition: all var(--transition-fast); outline: none; }
         .search-input::placeholder { color: var(--text-tertiary); }
         .search-input:hover { border-color: var(--text-tertiary); background: var(--bg-primary); }
         .search-input:focus { border-color: var(--accent); background: var(--bg-primary); box-shadow: 0 0 0 3px var(--accent-light); }
@@ -151,7 +151,24 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo" aria-label="渠道建设部 首页">
-                    <canvas class="logo-canvas" width="36" height="36" aria-hidden="true"></canvas>
+                    <svg class="logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <!-- 渐变定义 -->
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00abe7"/>
+                                <stop offset="100%" style="stop-color:#00479d"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- 外层圆环 -->
+                        <circle cx="18" cy="18" r="15" stroke="url(#logoGradient)" stroke-width="2" fill="none"/>
+                        <!-- 内层圆环 -->
+                        <circle cx="18" cy="18" r="11" stroke="url(#logoGradient)" stroke-width="1" fill="none" opacity="0.6"/>
+                        <!-- 交叉线条 -->
+                        <line x1="12" y1="12" x2="24" y2="24" stroke="url(#logoGradient)" stroke-width="2"/>
+                        <line x1="24" y1="12" x2="12" y2="24" stroke="url(#logoGradient)" stroke-width="2"/>
+                        <!-- 中心点 -->
+                        <circle cx="18" cy="18" r="2" fill="url(#logoGradient)"/>
+                    </svg>
                     <span>渠道建设部</span>
                 </a>
                 <div class="search-wrapper">
@@ -794,49 +811,10 @@
             }
         };
 
-        // 绘制Logo Canvas
-        function drawLogoCanvas() {
-            const canvas = document.querySelector('.logo-canvas');
-            if (!canvas) return;
-
-            const ctx = canvas.getContext('2d');
-            const width = canvas.width;
-            const height = canvas.height;
-
-            // 清空画布
-            ctx.clearRect(0, 0, width, height);
-
-            // 渐变背景
-            const gradient = ctx.createLinearGradient(0, 0, width, height);
-            gradient.addColorStop(0, '#00abe7'); // 浅蓝
-            gradient.addColorStop(1, '#00479d'); // 深蓝
-
-            // 绘制圆形背景
-            ctx.beginPath();
-            ctx.arc(width / 2, height / 2, 16, 0, Math.PI * 2);
-            ctx.fillStyle = gradient;
-            ctx.fill();
-
-            // 绘制 Channel 标志
-            ctx.fillStyle = 'white';
-            ctx.font = 'bold 14px "Noto Sans SC"';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('渠', width / 2, height / 2);
-
-            // 绘制边框
-            ctx.beginPath();
-            ctx.arc(width / 2, height / 2, 16, 0, Math.PI * 2);
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             Theme.init();
             Category.init();
             Search.init();
-            drawLogoCanvas();
         });
     </script>
 </body>
