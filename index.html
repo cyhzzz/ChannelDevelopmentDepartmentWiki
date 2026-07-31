@@ -148,9 +148,14 @@
         .site-card::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); background: radial-gradient(140px 100px at var(--mx, 50%) var(--my, 0%), var(--cat-soft), transparent 70%); opacity: 0; transition: opacity var(--transition-base); pointer-events: none; }
         .site-card:hover::after { opacity: 1; }
         .site-header { display: flex; align-items: center; gap: var(--space-3); position: relative; z-index: 1; }
-        .site-favicon { width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--cat-color); background: color-mix(in srgb, var(--cat-color) 10%, var(--bg-primary)); border: 1px solid color-mix(in srgb, var(--cat-color) 22%, transparent); flex-shrink: 0; transition: transform var(--transition-base), box-shadow var(--transition-base); }
-        .site-favicon svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-        .site-card:hover .site-favicon { transform: scale(1.06); box-shadow: 0 0 0 4px color-mix(in srgb, var(--cat-color) 14%, transparent); }
+        .site-favicon { --brand: #4dabf7; --brand-bg: color-mix(in srgb, var(--brand) 14%, var(--bg-primary)); width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--brand); background: var(--brand-bg); border: 1px solid color-mix(in srgb, var(--brand) 28%, transparent); flex-shrink: 0; transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base); position: relative; overflow: hidden; }
+        .site-favicon::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 22%, transparent) 0%, transparent 60%); opacity: 0.8; transition: opacity var(--transition-base); }
+        .site-favicon svg { width: 22px; height: 22px; fill: none; position: relative; z-index: 1; }
+        .site-favicon svg [data-fill] { fill: var(--brand); }
+        .site-favicon svg [data-stroke] { stroke: var(--brand); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+        .site-favicon svg [data-text] { fill: var(--brand); font-family: var(--font-sans); font-weight: 800; font-size: 13px; letter-spacing: -0.02em; }
+        .site-card:hover .site-favicon { transform: scale(1.06); box-shadow: 0 4px 14px color-mix(in srgb, var(--brand) 30%, transparent); border-color: var(--brand); }
+        .site-card:hover .site-favicon::before { opacity: 1; }
         .site-info { flex: 1; min-width: 0; }
         .site-name { font-size: 0.92rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.005em; }
         .site-url { font-size: 0.7rem; color: var(--text-tertiary); font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color var(--transition-fast); display: inline-flex; align-items: center; gap: 4px; }
@@ -250,6 +255,38 @@
         <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c0 4-5 5-5 10a5 5 0 0 0 10 0c0-3-2-4-2-7 0 0-3 1-3-3z"/></symbol>
         <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M15 20c0-2 2-4 4-4s4 1.5 4 4"/></symbol>
         <symbol id="i-link" viewBox="0 0 24 24"><path d="M9 12a3 3 0 0 1 3-3h3a3 3 0 0 1 0 6h-1"/><path d="M15 12a3 3 0 0 1-3 3H9a3 3 0 0 1 0-6h1"/></symbol>
+        <!-- 品牌独立图标：按站点真实识别色 + 独特图形 -->
+        <symbol id="b-doc" viewBox="0 0 24 24"><path data-fill d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" opacity="0.18"/><path data-stroke d="M14 2v6h6"/><path data-stroke d="M8 13h8M8 17h5"/></symbol>
+        <symbol id="b-bi" viewBox="0 0 24 24"><rect data-fill x="3" y="3" width="18" height="18" rx="2" opacity="0.15"/><path data-stroke d="M3 15l5-4 3 2 4-5 6 6"/><path data-stroke d="M8 21v-4M16 21v-7"/></symbol>
+        <symbol id="b-chart" viewBox="0 0 24 24"><rect data-fill x="3" y="3" width="18" height="18" rx="2" opacity="0.15"/><path data-stroke d="M3 20h18"/><path data-stroke d="M7 16V9M12 16V5M17 16v-4"/></symbol>
+        <symbol id="b-folder" viewBox="0 0 24 24"><path data-fill d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" opacity="0.18"/><path data-stroke d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></symbol>
+        <symbol id="b-live" viewBox="0 0 24 24"><rect data-fill x="2" y="6" width="13" height="12" rx="2" opacity="0.18"/><path data-stroke d="M2 7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7z"/><path data-stroke d="M15 10l5-3v10l-5-3"/></symbol>
+        <symbol id="b-xhs" viewBox="0 0 24 24"><path data-fill d="M6 4h12a2 2 0 0 1 2 2v14l-7-4-7 4V6a2 2 0 0 1 0-2z" opacity="0.2"/><path data-stroke d="M6 4h12a2 2 0 0 1 2 2v14l-7-4-7 4V6a2 2 0 0 1 0-2z"/><path data-stroke d="M9 9h6M9 12h4"/></symbol>
+        <symbol id="b-megaphone" viewBox="0 0 24 24"><path data-fill d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z" opacity="0.2"/><path data-stroke d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path data-stroke d="M14 8a5 5 0 0 1 0 8"/><path data-stroke d="M17 5a9 9 0 0 1 0 14"/></symbol>
+        <symbol id="b-matrix" viewBox="0 0 24 24"><rect data-fill x="3" y="3" width="18" height="18" rx="2" opacity="0.15"/><rect data-stroke x="3" y="3" width="7" height="7" rx="1"/><rect data-stroke x="14" y="3" width="7" height="7" rx="1"/><rect data-stroke x="3" y="14" width="7" height="7" rx="1"/><rect data-stroke x="14" y="14" width="7" height="7" rx="1"/></symbol>
+        <symbol id="b-search" viewBox="0 0 24 24"><circle data-fill cx="11" cy="11" r="7" opacity="0.18"/><circle data-stroke cx="11" cy="11" r="7"/><path data-stroke d="m21 21-4.3-4.3"/></symbol>
+        <symbol id="b-bulb" viewBox="0 0 24 24"><path data-fill d="M9 18h6v2H9zM10 21h4v1h-4z" opacity="0.3"/><path data-stroke d="M9 18h6"/><path data-stroke d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+        <symbol id="b-palette" viewBox="0 0 24 24"><path data-fill d="M12 3a9 9 0 1 0 0 18c1 0 1.5-.8 1.5-1.5 0-.4-.2-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8z" opacity="0.18"/><path data-stroke d="M12 3a9 9 0 1 0 0 18c1 0 1.5-.8 1.5-1.5 0-.4-.2-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8z"/><circle data-fill cx="7.5" cy="10.5" r="1.2"/><circle data-fill cx="12" cy="7.5" r="1.2"/><circle data-fill cx="16.5" cy="10.5" r="1.2"/></symbol>
+        <symbol id="b-play" viewBox="0 0 24 24"><circle data-fill cx="12" cy="12" r="9" opacity="0.15"/><circle data-stroke cx="12" cy="12" r="9"/><path data-fill d="M10 8l6 4-6 4V8z"/></symbol>
+        <symbol id="b-funnel" viewBox="0 0 24 24"><path data-fill d="M3 4h18l-7 8v8l-4-2v-6L3 4z" opacity="0.18"/><path data-stroke d="M3 4h18l-7 8v8l-4-2v-6L3 4z"/></symbol>
+        <symbol id="b-phone" viewBox="0 0 24 24"><rect data-fill x="6" y="2" width="12" height="20" rx="2" opacity="0.15"/><rect data-stroke x="6" y="2" width="12" height="20" rx="2"/><path data-stroke d="M11 18h2"/></symbol>
+        <symbol id="b-code" viewBox="0 0 24 24"><rect data-fill x="2" y="3" width="20" height="18" rx="2" opacity="0.12"/><path data-stroke d="m8 8-4 4 4 4"/><path data-stroke d="m16 8 4 4-4 4"/><path data-stroke d="m13 6-2 12"/></symbol>
+        <symbol id="b-spark" viewBox="0 0 24 24"><circle data-fill cx="12" cy="12" r="3" opacity="0.3"/><path data-stroke d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></symbol>
+        <symbol id="b-wiki" viewBox="0 0 24 24"><path data-fill d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4zM20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z" opacity="0.18"/><path data-stroke d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path data-stroke d="M20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/></symbol>
+        <symbol id="b-tencent" viewBox="0 0 24 24"><path data-fill d="M12 3a9 9 0 0 0-7 14c-.5 1-.5 2 0 3 .6.8 1.5.6 2 0l.5-1c1.3.6 2.8 1 4.5 1s3.2-.4 4.5-1l.5 1c.5.6 1.4.8 2 0 .5-1 .5-2 0-3A9 9 0 0 0 12 3z" opacity="0.2"/><path data-stroke d="M12 3a9 9 0 0 0-7 14c-.5 1-.5 2 0 3 .6.8 1.5.6 2 0l.5-1c1.3.6 2.8 1 4.5 1s3.2-.4 4.5-1l.5 1c.5.6 1.4.8 2 0 .5-1 .5-2 0-3A9 9 0 0 0 12 3z"/><circle data-fill cx="9" cy="12" r="1.4"/><circle data-fill cx="15" cy="12" r="1.4"/></symbol>
+        <symbol id="b-bytedance" viewBox="0 0 24 24"><path data-fill d="M16 3v9.5a3.5 3.5 0 1 1-3.5-3.5h.5V6h-.5a6.5 6.5 0 1 0 6.5 6.5V3h-3z" opacity="0.25"/></symbol>
+        <symbol id="b-alibaba" viewBox="0 0 24 24"><path data-fill d="M4 12h16M12 4v16" stroke-width="2"/><path data-stroke d="M4 12c2-3 5-4 8-4s6 1 8 4M12 4c-2 3-5 4-8 4M12 4c2 3 5 4 8 4M4 20c2-3 5-4 8-4s6 1 8 4M12 20c-2-3-5-4-8-4M12 20c2-3 5-4 8-4" stroke-width="1.4"/></symbol>
+        <symbol id="b-huawei" viewBox="0 0 24 24"><path data-fill d="M12 2l3 5h-2v3h-2V7H9l3-5zM5 9c1-2 3-3 4-3v2c-1 0-2 1-3 2l-1-1zm14 0c-1-2-3-3-4-3v2c1 0 2 1 3 2l1-1zM3 14c0 5 4 8 9 8s9-3 9-8H3z" opacity="0.2"/><path data-stroke d="M12 2l3 5h-2v3h-2V7H9l3-5zM5 9c1-2 3-3 4-3v2c-1 0-2 1-3 2l-1-1zm14 0c-1-2-3-3-4-3v2c1 0 2 1 3 2l1-1zM3 14c0 5 4 8 9 8s9-3 9-8H3z"/></symbol>
+        <symbol id="b-xiaomi" viewBox="0 0 24 24"><rect data-fill x="3" y="9" width="18" height="6" rx="3" opacity="0.22"/><rect data-stroke x="3" y="9" width="18" height="6" rx="3"/><path data-stroke d="M7 9V6M11 9V6M15 9V6M19 9V6"/><circle data-fill cx="8.5" cy="18" r="1"/><circle data-fill cx="15.5" cy="18" r="1"/></symbol>
+        <symbol id="b-oppo" viewBox="0 0 24 24"><circle data-stroke cx="12" cy="12" r="9"/><path data-stroke d="M8 12a4 4 0 0 1 8 0"/></symbol>
+        <symbol id="b-vivo" viewBox="0 0 24 24"><path data-fill d="M3 6h18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" opacity="0.18"/><rect data-stroke x="3" y="6" width="18" height="12" rx="2"/><path data-stroke d="M8 12a4 4 0 0 1 8 0"/></symbol>
+        <symbol id="b-apple" viewBox="0 0 24 24"><path data-fill d="M17.5 12.5c0-2.5 2-3.5 2-3.5s-1-1.5-3-1.5c-1.5 0-2.5 1-3 1s-2-1-3.5-1c-2 0-4 1.5-4 4 0 3.5 3 7 4 7 .5 0 1.5-.5 2.5-.5s2 .5 2.5.5c1 0 2.5-3 2.5-6z" opacity="0.2"/><path data-stroke d="M12 7c-1-1.5 0-3 1-3.5"/><path data-stroke d="M17.5 12.5c0-2.5 2-3.5 2-3.5s-1-1.5-3-1.5c-1.5 0-2.5 1-3 1s-2-1-3.5-1c-2 0-4 1.5-4 4 0 3.5 3 7 4 7 .5 0 1.5-.5 2.5-.5s2 .5 2.5.5c1 0 2.5-3 2.5-6z"/></symbol>
+        <symbol id="b-wechat" viewBox="0 0 24 24"><path data-fill d="M9 4C5 4 2 6.5 2 10c0 2 1 3.5 3 4.5L4 17l3-1.5c.5.5 1 .5 2 .5 4 0 7-2.5 7-6s-3-6-7-6z" opacity="0.2"/><path data-stroke d="M9 4C5 4 2 6.5 2 10c0 2 1 3.5 3 4.5L4 17l3-1.5c.5.5 1 .5 2 .5 4 0 7-2.5 7-6s-3-6-7-6z"/><path data-fill d="M15 11c-3 0-5.5 1.5-5.5 4s2.5 4 5.5 4c.5 0 1 0 1.5-.5L19 20l-1-2c1.5-1 2.5-2 2.5-3.5 0-2.5-2.5-3.5-5.5-3.5z" opacity="0.2"/><path data-stroke d="M15 11c-3 0-5.5 1.5-5.5 4s2.5 4 5.5 4c.5 0 1 0 1.5-.5L19 20l-1-2c1.5-1 2.5-2 2.5-3.5 0-2.5-2.5-3.5-5.5-3.5z"/><circle data-fill cx="6.5" cy="9.5" r="0.8"/><circle data-fill cx="11" cy="9.5" r="0.8"/><circle data-fill cx="13.5" cy="14" r="0.8"/><circle data-fill cx="17" cy="14" r="0.8"/></symbol>
+        <symbol id="b-target" viewBox="0 0 24 24"><circle data-fill cx="12" cy="12" r="9" opacity="0.15"/><circle data-stroke cx="12" cy="12" r="9"/><circle data-stroke cx="12" cy="12" r="5"/><circle data-fill cx="12" cy="12" r="1.6"/></symbol>
+        <symbol id="b-kuaishou" viewBox="0 0 24 24"><path data-fill d="M5 4h14a2 2 0 0 1 2 2v9a7 7 0 1 1-14 0V6a2 2 0 0 1 2-2h2v6a3 3 0 0 0 6 0V4h-2v6a1 1 0 0 1-2 0V4H5z" opacity="0.2"/></symbol>
+        <symbol id="b-gaoding" viewBox="0 0 24 24"><circle data-fill cx="12" cy="12" r="9" opacity="0.18"/><circle data-stroke cx="12" cy="12" r="9"/><text data-text x="12" y="16" text-anchor="middle">G</text></symbol>
+        <symbol id="b-douyin" viewBox="0 0 24 24"><path data-fill d="M16 3v9.5a3.5 3.5 0 1 1-3.5-3.5h.5V6h-.5a6.5 6.5 0 1 0 6.5 6.5V3h-3z" opacity="0.2"/><path data-stroke d="M16 3v9.5a3.5 3.5 0 1 1-3.5-3.5h.5V6h-.5a6.5 6.5 0 1 0 6.5 6.5V3h-3z"/></symbol>
+        <symbol id="b-baidu" viewBox="0 0 24 24"><circle data-fill cx="12" cy="12" r="10" opacity="0.15"/><path data-fill d="M7 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM13 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM10 17h4v1h-4z"/></symbol>
     </svg>
     <a href="#main-content" class="skip-link">跳到主要内容</a>
     <header class="header">
@@ -1060,33 +1097,53 @@
                         io.observe(heroEl);
                     }
                 }
-                // favicon → 按站名关键词匹配 SVG 图标
-                const iconMap = [
-                    [/周报|SOP|汇报/, 'i-doc'],
-                    [/BI|省心投BI/, 'i-bi'],
-                    [/统计|省心投|新榜|矩阵|数据/, 'i-chart'],
-                    [/知识库|wiki|Wiki/, 'i-wiki'],
-                    [/文件夹|共享/, 'i-folder'],
-                    [/直播|视频号/, 'i-live'],
-                    [/小红书|新媒体|书|笔记/, 'i-bookmark'],
-                    [/竞品|分析/, 'i-search'],
-                    [/AIGC|教程|需求|排期/, 'i-bulb'],
-                    [/稿定|设计|UI/, 'i-palette'],
-                    [/公众号|视频/, 'i-play'],
-                    [/广告|腾讯广告|巨量|引擎|星火|本地通/, 'i-megaphone'],
-                    [/应用市场|华为|荣耀|小米|Oppo|vivo|苹果/, 'i-phone'],
-                    [/小鹅通|转化|客户/, 'i-funnel'],
-                    [/API/, 'i-code'],
-                    [/聚光/, 'i-spark'],
-                    [/目标|投放/, 'i-target']
-                ];
+                // favicon → 按站名精确匹配（每个站点独立品牌色 + 独特图形）
+                const siteIconMap = {
+                    '周报':              { icon: 'b-doc',       color: '#3b82f6' },
+                    '省心投':            { icon: 'b-chart',     color: '#0ea5e9' },
+                    '省心投BI':          { icon: 'b-bi',        color: '#0ea5e9' },
+                    '部门共享文件夹':    { icon: 'b-folder',    color: '#22c55e' },
+                    '直播统计表':        { icon: 'b-live',      color: '#f43f5e' },
+                    '新媒体内容全量数据统计': { icon: 'b-chart',  color: '#ec4899' },
+                    '小红书统计表':      { icon: 'b-xhs',       color: '#ff2442' },
+                    '纯广告素材统计表':  { icon: 'b-megaphone', color: '#f97316' },
+                    '新榜矩阵通':        { icon: 'b-matrix',    color: '#06b6d4' },
+                    '竞品内容分析':      { icon: 'b-search',    color: '#8b5cf6' },
+                    '新榜':              { icon: 'b-chart',     color: '#06b6d4' },
+                    '小红书聚光':        { icon: 'b-spark',     color: '#ff2442' },
+                    'AIGC全链路教程':    { icon: 'b-bulb',      color: '#f59e0b' },
+                    '稿定设计':          { icon: 'b-gaoding',   color: '#7c3aed' },
+                    'UI需求与排期':      { icon: 'b-palette',   color: '#ec4899' },
+                    '视频号助手':        { icon: 'b-wechat',    color: '#07c160' },
+                    '公众号平台':        { icon: 'b-wechat',    color: '#07c160' },
+                    '小红书专业号':      { icon: 'b-xhs',       color: '#ff2442' },
+                    '腾讯广告':          { icon: 'b-tencent',   color: '#0052d9' },
+                    '小红书星火':        { icon: 'b-spark',     color: '#ff2442' },
+                    '巨量引擎':          { icon: 'b-douyin',    color: '#000000' },
+                    '阿里本地通':        { icon: 'b-alibaba',   color: '#ff6a00' },
+                    '华为应用市场':      { icon: 'b-huawei',    color: '#cf0a2c' },
+                    '荣耀应用市场':      { icon: 'b-huawei',    color: '#0066ff' },
+                    '小米应用市场':      { icon: 'b-xiaomi',    color: '#ff6700' },
+                    'Oppo应用市场':      { icon: 'b-oppo',      color: '#1aad19' },
+                    'vivo应用市场':      { icon: 'b-vivo',      color: '#415fff' },
+                    '苹果应用市场':      { icon: 'b-apple',     color: '#555555' },
+                    '小鹅通':            { icon: 'b-funnel',    color: '#ff5b29' },
+                    '客户转化SOP':       { icon: 'b-doc',       color: '#06b6d4' },
+                    '小鹅通API':         { icon: 'b-code',      color: '#ff5b29' },
+                    '小红书API':         { icon: 'b-code',      color: '#ff2442' },
+                    '腾讯广告API':       { icon: 'b-code',      color: '#0052d9' },
+                    '巨量引擎API':       { icon: 'b-code',      color: '#000000' },
+                    '华为广告API':       { icon: 'b-code',      color: '#cf0a2c' },
+                    '苹果搜索广告API':   { icon: 'b-code',      color: '#555555' },
+                    '部门知识库':        { icon: 'b-wiki',      color: '#3370ff' }
+                };
                 document.querySelectorAll('.site-card').forEach(card => {
                     const fav = card.querySelector('.site-favicon');
                     const name = (card.querySelector('.site-name') || {}).textContent || '';
                     if (!fav) return;
-                    let icon = 'i-grid';
-                    for (const [re, id] of iconMap) { if (re.test(name)) { icon = id; break; } }
-                    fav.innerHTML = '<svg><use href="#' + icon + '"/></svg>';
+                    const conf = siteIconMap[name.trim()] || { icon: 'b-doc', color: '#4dabf7' };
+                    fav.style.setProperty('--brand', conf.color);
+                    fav.innerHTML = '<svg viewBox="0 0 24 24"><use href="#' + conf.icon + '"/></svg>';
                 });
                 // 卡片鼠标光斑跟随
                 if (prefersReducedMotion) return;
