@@ -110,12 +110,19 @@
         .category-btn:hover { color: var(--text-primary); border-color: var(--border-medium); }
         .category-btn.active { border-color: var(--card-hover-border); color: var(--accent); background: var(--accent-light); font-weight: 600; }
         .content { flex: 1; padding-bottom: var(--space-8); }
-        .section { margin-bottom: var(--space-7); }
+        .section { margin-bottom: var(--space-7); --cat-color: var(--accent); --cat-soft: var(--accent-light); }
+        .section[data-category="data"] { --cat-color: #3b82f6; --cat-soft: rgba(59, 130, 246, 0.14); }
+        .section[data-category="content"] { --cat-color: #f59e0b; --cat-soft: rgba(245, 158, 11, 0.14); }
+        .section[data-category="output"] { --cat-color: #10b981; --cat-soft: rgba(16, 185, 129, 0.14); }
+        .section[data-category="ads"] { --cat-color: #8b5cf6; --cat-soft: rgba(139, 92, 246, 0.14); }
+        .section[data-category="conversion"] { --cat-color: #06b6d4; --cat-soft: rgba(6, 182, 212, 0.14); }
+        .section[data-category="tools"] { --cat-color: #64748b; --cat-soft: rgba(100, 116, 139, 0.14); }
 
-        /* Section Header - 强字体层次 */
-        .section-header { display: flex; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--card-border); }
+        /* Section Header - 分类色竖条 + 强字体层次 */
+        .section-header { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--card-border); }
+        .section-header::before { content: ''; width: 3px; height: 1.1em; border-radius: 2px; background: var(--cat-color); flex-shrink: 0; }
         .section-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); font-family: var(--font-sans); letter-spacing: -0.015em; }
-        .section-count { font-size: 0.75rem; color: var(--text-tertiary); font-family: var(--font-mono); font-weight: 500; font-variant-numeric: tabular-nums; }
+        .section-count { font-size: 0.75rem; color: var(--text-tertiary); font-family: var(--font-mono); font-weight: 500; font-variant-numeric: tabular-nums; margin-left: auto; }
 
         /* Sites Grid */
         .sites-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-3); }
@@ -126,13 +133,13 @@
 
         /* Site Card - 玻璃质感 */
         .site-card { background: var(--card-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: var(--space-4); text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: var(--space-2); transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base); position: relative; border: 1px solid var(--card-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
-        .site-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--card-hover-border); }
+        .site-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--cat-color); }
         .site-card:active { transform: translateY(-1px); }
-        .site-card::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); background: radial-gradient(120px 80px at var(--mx, 50%) var(--my, 0%), var(--accent-light), transparent 70%); opacity: 0; transition: opacity var(--transition-base); pointer-events: none; }
+        .site-card::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); background: radial-gradient(140px 100px at var(--mx, 50%) var(--my, 0%), var(--cat-soft), transparent 70%); opacity: 0; transition: opacity var(--transition-base); pointer-events: none; }
         .site-card:hover::after { opacity: 1; }
         .site-header { display: flex; align-items: center; gap: var(--space-3); position: relative; z-index: 1; }
-        .site-favicon { width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 700; font-family: var(--font-sans); color: var(--accent); background: var(--accent-light); border: 1px solid var(--card-hover-border); flex-shrink: 0; line-height: 1; letter-spacing: -0.02em; transition: transform var(--transition-base), box-shadow var(--transition-base); }
-        .site-card:hover .site-favicon { transform: scale(1.06); box-shadow: 0 0 0 4px var(--accent-light); }
+        .site-favicon { width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 700; font-family: var(--font-sans); color: var(--cat-color); background: var(--cat-soft); border: 1px solid color-mix(in srgb, var(--cat-color) 30%, transparent); flex-shrink: 0; line-height: 1; letter-spacing: -0.02em; transition: transform var(--transition-base), box-shadow var(--transition-base); }
+        .site-card:hover .site-favicon { transform: scale(1.06); box-shadow: 0 0 0 4px var(--cat-soft); }
         .site-info { flex: 1; min-width: 0; }
         .site-name { font-size: 0.92rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.005em; }
         .site-url { font-size: 0.7rem; color: var(--text-tertiary); font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color var(--transition-fast); }
@@ -140,7 +147,7 @@
         .site-desc { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: auto; position: relative; z-index: 1; }
         .site-meta { display: flex; gap: var(--space-1); margin-top: var(--space-2); flex-wrap: wrap; position: relative; z-index: 1; }
         .site-tag { font-size: 0.64rem; color: var(--text-secondary); font-family: var(--font-sans); font-weight: 500; padding: 2px 9px; background: var(--bg-secondary); border-radius: 999px; border: 1px solid var(--card-border); letter-spacing: 0.01em; }
-        .site-tag::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-right: 5px; vertical-align: 1px; opacity: 0.7; }
+        .site-tag::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--cat-color); margin-right: 5px; vertical-align: 1px; opacity: 0.8; }
 
         /* Footer */
         .footer { border-top: 1px solid var(--card-border); padding: var(--space-5) 0; margin-top: auto; }
@@ -970,8 +977,36 @@
         const Stats = {
             init() {
                 const total = document.querySelectorAll('.site-card').length;
-                const el = document.getElementById('statTools');
-                if (el) el.textContent = total;
+                const cats = document.querySelectorAll('.section[data-category]').length;
+                const elT = document.getElementById('statTools');
+                const elC = document.getElementById('statCats');
+                if (elC) elC.textContent = cats;
+                // 数字递增动画
+                if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+                    if (elT) elT.textContent = total;
+                } else {
+                    const animate = (el, target) => {
+                        if (!el) return;
+                        let start = null; const dur = 1200;
+                        const step = (ts) => {
+                            if (!start) start = ts;
+                            const p = Math.min((ts - start) / dur, 1);
+                            const eased = 1 - Math.pow(1 - p, 3);
+                            el.textContent = Math.round(target * eased);
+                            if (p < 1) requestAnimationFrame(step);
+                        };
+                        requestAnimationFrame(step);
+                    };
+                    const heroEl = document.querySelector('.hero');
+                    if (heroEl) {
+                        const io = new IntersectionObserver((entries) => {
+                            entries.forEach(e => {
+                                if (e.isIntersecting) { animate(elT, total); io.disconnect(); }
+                            });
+                        }, { threshold: 0.3 });
+                        io.observe(heroEl);
+                    }
+                }
                 // emoji favicon → 站名首字字母徽标
                 document.querySelectorAll('.site-card').forEach(card => {
                     const fav = card.querySelector('.site-favicon');
