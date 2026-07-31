@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+    <meta name="description" content="渠道建设部内部工具导航站">
+    <title>渠道建设部 — 极简导航</title>
+    <link rel="shortcut icon" href="./assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <style>
+        :root {
+            color-scheme: light;
+            --shade-0: #ffffff; --shade-1: #fafafa; --shade-2: #f8f9fa;
+            --shade-3: #e9ecef; --shade-4: #dee2e6; --shade-5: #adb5bd;
+            --shade-6: #6c757d; --shade-7: #495057; --shade-8: #343a40;
+            --shade-9: #212529; --shade-10: #1a1a1a; --shade-11: #0d0d0d;
+            --bg-primary: var(--shade-0); --bg-secondary: var(--shade-1); --bg-tertiary: var(--shade-2);
+            --bg-hover: var(--shade-2); --border-light: var(--shade-3); --border-medium: var(--shade-4);
+            --text-primary: var(--shade-9); --text-secondary: var(--shade-7); --text-tertiary: var(--shade-5);
+            --accent: #0066cc; --accent-hover: #0052a3; --accent-light: #e6f0ff;
+            --accent-border: #b3d1ff; --link-color: #0066cc; --link-hover: #0052a3;
+            --aurora-1: rgba(0, 102, 204, 0.16); --aurora-2: rgba(120, 80, 200, 0.10); --aurora-3: rgba(0, 180, 200, 0.08);
+            --card-bg: rgba(255, 255, 255, 0.72); --card-border: rgba(0, 0, 0, 0.10); --card-hover-border: rgba(0, 102, 204, 0.35);
+            --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px;
+            --space-6: 28px; --space-7: 40px; --space-8: 56px; --space-9: 80px;
+            --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, Consolas, monospace;
+            --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px; --radius-xl: 20px;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04); --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.08); --shadow-xl: 0 16px 40px rgba(0,0,0,0.1);
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: 120ms var(--ease-out); --transition-base: 200ms var(--ease-out); --transition-slow: 320ms var(--ease-out);
+        }
+        [data-theme="dark"] {
+            color-scheme: dark;
+            --bg-primary: #0a0e1a; --bg-secondary: #121724; --bg-tertiary: #1a2030;
+            --bg-hover: #1a2030; --border-light: #262626; --border-medium: #333333;
+            --text-primary: #f5f5f7; --text-secondary: #b8b8c0; --text-tertiary: #787880;
+            --accent: #4dabf7; --accent-hover: #74c0fc; --accent-light: rgba(77, 171, 247, 0.14);
+            --accent-border: rgba(77, 171, 247, 0.35); --link-color: #4dabf7; --link-hover: #74c0fc;
+            --aurora-1: rgba(77, 171, 247, 0.26); --aurora-2: rgba(140, 100, 220, 0.22); --aurora-3: rgba(0, 200, 200, 0.18);
+            --card-bg: rgba(20, 26, 40, 0.68); --card-border: rgba(255, 255, 255, 0.12); --card-hover-border: rgba(77, 171, 247, 0.45);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.3); --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.5); --shadow-xl: 0 16px 40px rgba(0,0,0,0.6);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 15px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+        body { font-family: var(--font-sans); background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.65; letter-spacing: 0.01em; min-height: 100vh; transition: background-color var(--transition-slow), color var(--transition-slow); position: relative; overflow-x: hidden; }
+        ::selection { background: var(--accent); color: white; }
+        .container { max-width: 1440px; margin: 0 auto; padding: 0 var(--space-6); }
+
+        /* Aurora 氛围光晕背景层 */
+        .bg-aurora { position: fixed; inset: 0; z-index: -2; pointer-events: none; background: var(--bg-primary); transition: background-color var(--transition-slow); }
+        .bg-aurora::before { content: ''; position: absolute; inset: 0; background:
+            radial-gradient(70% 55% at 15% 5%, var(--aurora-1) 0%, transparent 62%),
+            radial-gradient(60% 50% at 90% 10%, var(--aurora-3) 0%, transparent 65%),
+            radial-gradient(65% 60% at 50% 100%, var(--aurora-2) 0%, transparent 72%); }
+        .bg-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.4; transition: opacity var(--transition-slow); }
+        [data-theme="dark"] .bg-canvas { opacity: 0.32; }
+
+        /* Skip link */
+        .skip-link { position: absolute; left: -9999px; top: 0; z-index: 1000; padding: var(--space-2) var(--space-4); background: var(--accent); color: white; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500; }
+        .skip-link:focus { left: var(--space-4); top: var(--space-4); }
+
+        /* Header */
+        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255, 255, 255, 0.72); backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px); border-bottom: 1px solid var(--card-border); transition: background-color var(--transition-base), border-color var(--transition-base); padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+        [data-theme="dark"] .header { background: rgba(13, 13, 13, 0.72); }
+        .header-content { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: var(--space-5); }
+        .logo { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; color: var(--text-primary); font-weight: 600; font-size: 1.1rem; letter-spacing: -0.01em; transition: color var(--transition-fast); }
+        .logo:hover { color: var(--accent); }
+        .logo-svg { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
+        .search-wrapper { flex: 1; max-width: 380px; position: relative; }
+        .search-input { width: 100%; height: 40px; padding: 0 var(--space-4) 0 40px; border: 1px solid var(--card-border); border-radius: var(--radius-md); background: var(--card-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--text-primary); font-size: 0.9rem; font-family: var(--font-sans); transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast); outline: none; touch-action: manipulation; }
+        .search-input::placeholder { color: var(--text-tertiary); }
+        .search-input:hover { border-color: var(--border-medium); }
+        .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+        .search-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--text-tertiary); pointer-events: none; }
+        .search-shortcut { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-tertiary); padding: 2px 6px; border: 1px solid var(--card-border); border-radius: var(--radius-sm); background: transparent; pointer-events: none; }
+        .theme-toggle { width: 40px; height: 40px; border: 1px solid var(--card-border); border-radius: var(--radius-md); background: var(--card-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast); position: relative; touch-action: manipulation; }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+        .theme-icon { position: absolute; transition: opacity var(--transition-base), transform var(--transition-base); }
+        .theme-icon.sun { opacity: 1; transform: scale(1) rotate(0); }
+        .theme-icon.moon { opacity: 0; transform: scale(0.5) rotate(-90deg); }
+        [data-theme="dark"] .theme-icon.sun { opacity: 0; transform: scale(0.5) rotate(90deg); }
+        [data-theme="dark"] .theme-icon.moon { opacity: 1; transform: scale(1) rotate(0); }
+
+        /* Main */
+        .main { padding-top: 64px; min-height: 100vh; display: flex; flex-direction: column; }
+
+        /* Hero 品牌区 - 标志性视觉锚点 */
+        .hero { padding: var(--space-8) 0 var(--space-5); text-align: center; }
+        .hero-eyebrow { display: inline-flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--card-hover-border); border-radius: 999px; background: var(--accent-light); margin-bottom: var(--space-4); }
+        .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+        .hero-title { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: var(--space-3); text-wrap: balance; position: relative; }
+        .hero-title::after { content: ''; display: block; width: 56px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: var(--space-4) auto 0; }
+        .hero-title-accent { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+        .hero-subtitle { font-size: 1rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto var(--space-5); line-height: 1.6; }
+        .hero-stats { display: flex; justify-content: center; gap: var(--space-6); flex-wrap: wrap; }
+        .hero-stat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .hero-stat-num { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 600; color: var(--text-primary); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+        .hero-stat-label { font-size: 0.72rem; color: var(--text-tertiary); letter-spacing: 0.04em; }
+        .hero-stat-divider { width: 1px; align-self: center; height: 28px; background: var(--card-border); }
+
+        .category-nav { padding: var(--space-4) 0 var(--space-5); display: flex; justify-content: center; gap: var(--space-2); flex-wrap: wrap; }
+        .category-btn { --btn-color: var(--accent); padding: var(--space-2) var(--space-4); border: 1px solid var(--card-border); border-radius: 999px; background: var(--card-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast); font-family: var(--font-sans); touch-action: manipulation; display: inline-flex; align-items: center; gap: 7px; }
+        .category-btn[data-category="data"] { --btn-color: #3b82f6; }
+        .category-btn[data-category="content"] { --btn-color: #f59e0b; }
+        .category-btn[data-category="output"] { --btn-color: #10b981; }
+        .category-btn[data-category="ads"] { --btn-color: #8b5cf6; }
+        .category-btn[data-category="conversion"] { --btn-color: #06b6d4; }
+        .category-btn[data-category="tools"] { --btn-color: #64748b; }
+        .category-btn::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--btn-color); opacity: 0.5; transition: opacity var(--transition-fast), box-shadow var(--transition-fast); }
+        .category-btn:hover { color: var(--text-primary); border-color: var(--border-medium); }
+        .category-btn:hover::before { opacity: 0.85; }
+        .category-btn.active { border-color: color-mix(in srgb, var(--btn-color) 40%, transparent); color: var(--btn-color); background: color-mix(in srgb, var(--btn-color) 10%, var(--bg-primary)); font-weight: 600; }
+        .category-btn.active::before { opacity: 1; box-shadow: 0 0 6px var(--btn-color); }
+        .content { flex: 1; padding-bottom: var(--space-8); }
+        .section { margin-bottom: var(--space-8); --cat-color: var(--accent); --cat-soft: var(--accent-light); }
+        .section[data-category="data"] { --cat-color: #3b82f6; --cat-soft: rgba(59, 130, 246, 0.14); }
+        .section[data-category="content"] { --cat-color: #f59e0b; --cat-soft: rgba(245, 158, 11, 0.14); }
+        .section[data-category="output"] { --cat-color: #10b981; --cat-soft: rgba(16, 185, 129, 0.14); }
+        .section[data-category="ads"] { --cat-color: #8b5cf6; --cat-soft: rgba(139, 92, 246, 0.14); }
+        .section[data-category="conversion"] { --cat-color: #06b6d4; --cat-soft: rgba(6, 182, 212, 0.14); }
+        .section[data-category="tools"] { --cat-color: #64748b; --cat-soft: rgba(100, 116, 139, 0.14); }
+
+        /* Section Header - 分类色竖条 + 强字体层次 */
+        .section-header { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--card-border); }
+        .section-header::before { content: ''; width: 3px; height: 1.1em; border-radius: 2px; background: var(--cat-color); flex-shrink: 0; }
+        .section-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); font-family: var(--font-sans); letter-spacing: -0.015em; }
+        .section-count { font-size: 0.75rem; color: var(--text-tertiary); font-family: var(--font-mono); font-weight: 500; font-variant-numeric: tabular-nums; margin-left: auto; }
+
+        /* Sites Grid */
+        .sites-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-3); }
+        @media (max-width: 1400px) { .sites-grid { grid-template-columns: repeat(5, 1fr); } }
+        @media (max-width: 1200px) { .sites-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 900px) { .sites-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 600px) { .sites-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-2); } }
+
+        /* Site Card - 玻璃质感 */
+        .site-card { background: var(--card-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: var(--space-4); text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base); position: relative; border: 1px solid var(--card-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+        .site-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--cat-color); }
+        .site-card:active { transform: translateY(-1px); }
+        .site-card::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); background: radial-gradient(140px 100px at var(--mx, 50%) var(--my, 0%), var(--cat-soft), transparent 70%); opacity: 0; transition: opacity var(--transition-base); pointer-events: none; }
+        .site-card:hover::after { opacity: 1; }
+        .site-header { display: flex; align-items: center; gap: var(--space-3); position: relative; z-index: 1; }
+        .site-favicon { --brand: #4dabf7; --brand-bg: color-mix(in srgb, var(--brand) 14%, var(--bg-primary)); width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--brand); background: var(--brand-bg); border: 1px solid color-mix(in srgb, var(--brand) 28%, transparent); flex-shrink: 0; transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base); position: relative; overflow: hidden; }
+        .site-favicon::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 22%, transparent) 0%, transparent 60%); opacity: 0.8; transition: opacity var(--transition-base); }
+        .site-favicon svg { width: 22px; height: 22px; fill: none; position: relative; z-index: 1; }
+        .site-favicon svg [data-fill] { fill: var(--brand); }
+        .site-favicon svg [data-stroke] { stroke: var(--brand); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+        .site-favicon svg [data-text] { fill: var(--brand); font-family: var(--font-sans); font-weight: 800; font-size: 13px; letter-spacing: -0.02em; }
+        .site-card:hover .site-favicon { transform: scale(1.06); box-shadow: 0 4px 14px color-mix(in srgb, var(--brand) 30%, transparent); border-color: var(--brand); }
+        .site-card:hover .site-favicon::before { opacity: 1; }
+        .site-info { flex: 1; min-width: 0; }
+        .site-name { font-size: 0.92rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.005em; }
+        .site-url { font-size: 0.7rem; color: var(--text-tertiary); font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color var(--transition-fast); display: inline-flex; align-items: center; gap: 4px; }
+        .site-url::before { content: ''; width: 0; height: 1px; background: currentColor; transition: width var(--transition-base); }
+        .site-card:hover .site-url::before { width: 10px; }
+        .site-card:hover .site-url { color: var(--accent); }
+        .site-desc { font-size: 0.77rem; color: var(--text-secondary); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: auto; position: relative; z-index: 1; }
+        .site-meta { display: flex; gap: 6px; margin-top: 2px; flex-wrap: wrap; position: relative; z-index: 1; }
+        .site-tag { font-size: 0.62rem; color: var(--text-tertiary); font-family: var(--font-sans); font-weight: 500; padding: 2px 8px; background: transparent; border-radius: 999px; border: 1px solid var(--card-border); letter-spacing: 0.02em; }
+        .site-tag::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--cat-color); margin-right: 5px; vertical-align: 2px; opacity: 0.7; }
+
+        /* Footer */
+        .footer { border-top: 1px solid var(--card-border); padding: var(--space-5) 0; margin-top: auto; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--text-tertiary); }
+        .footer-links { display: flex; gap: var(--space-5); }
+        .footer-link { color: var(--text-secondary); text-decoration: none; transition: color var(--transition-fast); font-weight: 500; }
+        .footer-link:hover { color: var(--accent); }
+
+        /* Animations - IntersectionObserver 驱动，可复用、可中断 */
+        @media (prefers-reduced-motion: no-preference) {
+            .hero > * { opacity: 0; transform: translateY(14px); transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); }
+            .hero.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
+            .hero.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 80ms; }
+            .hero.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 160ms; }
+            .hero.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 240ms; }
+            .section { opacity: 0; transform: translateY(12px); transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out); }
+            .section.is-visible { opacity: 1; transform: translateY(0); }
+            .site-card { opacity: 0; transform: translateY(8px); transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out), box-shadow var(--transition-base), border-color var(--transition-base); }
+            .section.is-visible .site-card { opacity: 1; transform: translateY(0); }
+            .section.is-visible .site-card:nth-child(1) { transition-delay: 0ms; }
+            .section.is-visible .site-card:nth-child(2) { transition-delay: 40ms; }
+            .section.is-visible .site-card:nth-child(3) { transition-delay: 80ms; }
+            .section.is-visible .site-card:nth-child(4) { transition-delay: 120ms; }
+            .section.is-visible .site-card:nth-child(5) { transition-delay: 160ms; }
+            .section.is-visible .site-card:nth-child(6) { transition-delay: 200ms; }
+            .section.is-visible .site-card:nth-child(n+7) { transition-delay: 240ms; }
+        }
+
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+        .section.hidden { display: none; }
+
+        /* Mobile */
+        @media (max-width: 767px) {
+            .header-content { height: 56px; gap: var(--space-3); }
+            .container { padding: 0 var(--space-4); }
+            .main { padding-top: 56px; }
+            .search-wrapper { max-width: none; }
+            .search-shortcut { display: none; }
+            .sites-grid { grid-template-columns: 1fr; gap: var(--space-2); }
+            .site-card { padding: var(--space-3); gap: 8px; }
+            .site-favicon { width: 36px; height: 36px; }
+            .site-favicon svg { width: 18px; height: 18px; }
+            .site-desc { -webkit-line-clamp: 1; }
+            .hero { padding: var(--space-6) 0 var(--space-4); }
+            .hero-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+            .hero-title::after { width: 40px; margin-top: var(--space-3); }
+            .hero-subtitle { font-size: 0.9rem; }
+            .hero-stats { gap: var(--space-4); }
+            .hero-stat-num { font-size: 1.25rem; }
+            .category-nav { padding: var(--space-4) 0 var(--space-3); gap: var(--space-2); }
+            .category-btn { padding: 6px 12px; font-size: 0.8rem; }
+            .footer-content { flex-direction: column; gap: var(--space-3); text-align: center; }
+            .footer-links { gap: var(--space-4); }
+        }
+        @media (max-width: 380px) {
+            .hero-stats { gap: var(--space-3); }
+            .hero-stat-divider { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-aurora" aria-hidden="true"></div>
+    <canvas class="bg-canvas" aria-hidden="true" id="bgCanvas"></canvas>
+    <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" focusable="false">
+        <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 3h9l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M8 13h8M8 17h5"/></symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 4-6"/></symbol>
+        <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></symbol>
+        <symbol id="i-live" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></symbol>
+        <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 4h12a1 1 0 0 1 1 1v15l-7-4-7 4V5a1 1 0 0 1 1-1z"/></symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+        <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+        <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1 0 1.5-.8 1.5-1.5 0-.4-.2-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="10.5" r="1"/><circle cx="12" cy="7.5" r="1"/><circle cx="16.5" cy="10.5" r="1"/></symbol>
+        <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4V8z"/></symbol>
+        <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M14 8a5 5 0 0 1 0 8"/><path d="M17 5a9 9 0 0 1 0 14"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+        <symbol id="i-funnel" viewBox="0 0 24 24"><path d="M3 4h18l-7 8v8l-4-2v-6L3 4z"/></symbol>
+        <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13 6-2 12"/></symbol>
+        <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/><circle cx="12" cy="12" r="3"/></symbol>
+        <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+        <symbol id="i-bi" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l5-4 3 2 4-5 6 6"/><path d="M8 21v-4M16 21v-7"/></symbol>
+        <symbol id="i-wiki" viewBox="0 0 24 24"><path d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/></symbol>
+        <symbol id="i-funnel2" viewBox="0 0 24 24"><path d="M3 5h18l-7 8v6l-4 2v-8L3 5z"/></symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/><path d="M7 13h2M11 13h2M15 13h2M7 17h2M11 17h2"/></symbol>
+        <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c0 4-5 5-5 10a5 5 0 0 0 10 0c0-3-2-4-2-7 0 0-3 1-3-3z"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M15 20c0-2 2-4 4-4s4 1.5 4 4"/></symbol>
+        <symbol id="i-link" viewBox="0 0 24 24"><path d="M9 12a3 3 0 0 1 3-3h3a3 3 0 0 1 0 6h-1"/><path d="M15 12a3 3 0 0 1-3 3H9a3 3 0 0 1 0-6h1"/></symbol>
+        <!-- 品牌独立图标：按站点真实识别色 + 独特图形 -->
+        <symbol id="b-doc" viewBox="0 0 24 24"><path data-fill d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" opacity="0.18"/><path data-stroke d="M14 2v6h6"/><path data-stroke d="M8 13h8M8 17h5"/></symbol>
+        <symbol id="b-bi" viewBox="0 0 24 24"><rect data-fill x="3" y="3" width="18" height="18" rx="2" opacity="0.15"/><path data-stroke d="M3 15l5-4 3 2 4-5 6 6"/><path data-stroke d="M8 21v-4M16 21v-7"/></symbol>
+        <symbol id="b-chart" viewBox="0 0 24 24"><rect data-fill x="3" y="3" width="18" height="18" rx="2" opacity="0.15"/><path data-stroke d="M3 20h18"/><path data-stroke d="M7 16V9M12 16V5M17 16v-4"/></symbol>
+        <symbol id="b-folder" viewBox="0 0 24 24"><path data-fill d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" opacity="0.18"/><path data-stroke d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></symbol>
+        <symbol id="b-live" viewBox="0 0 24 24"><rect data-fill x="2" y="6" width="13" height="12" rx="2" opacity="0.18"/><path data-stroke d="M2 7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7z"/><path data-stroke d="M15 10l5-3v10l-5-3"/></symbol>
+        <symbol id="b-xhs" viewBox="0 0 24 24"><path data-fill d="M6 4h12a2 2 0 0 1 2 2v14l-7-4-7 4V6a2 2 0 0 1 0-2z" opacity="0.2"/><path data-stroke d="M6 4h12a2 2 0 0 1 2 2v14l-7-4-7 4V6a2 2 0 0 1 0-2z"/><path data-stroke d="M9 9h6M9 12h4"/></symbol>
+        <symbol id="b-megaphone" viewBox="0 0 24 24"><path data-fill d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z" opacity="0.2"/><path data-stroke d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path data-stroke d="M14 8a5 5 0 0 1 0 8"/><path data-stroke d="M17 5a9 9 0 0 1 0 14"/></symbol>
+        <symbol id="b-matrix" viewBox="0 0 24 24"><rect data-fill x="3" y="3" width="18" height="18" rx="2" opacity="0.15"/><rect data-stroke x="3" y="3" width="7" height="7" rx="1"/><rect data-stroke x="14" y="3" width="7" height="7" rx="1"/><rect data-stroke x="3" y="14" width="7" height="7" rx="1"/><rect data-stroke x="14" y="14" width="7" height="7" rx="1"/></symbol>
+        <symbol id="b-search" viewBox="0 0 24 24"><circle data-fill cx="11" cy="11" r="7" opacity="0.18"/><circle data-stroke cx="11" cy="11" r="7"/><path data-stroke d="m21 21-4.3-4.3"/></symbol>
+        <symbol id="b-bulb" viewBox="0 0 24 24"><path data-fill d="M9 18h6v2H9zM10 21h4v1h-4z" opacity="0.3"/><path data-stroke d="M9 18h6"/><path data-stroke d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+        <symbol id="b-palette" viewBox="0 0 24 24"><path data-fill d="M12 3a9 9 0 1 0 0 18c1 0 1.5-.8 1.5-1.5 0-.4-.2-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8z" opacity="0.18"/><path data-stroke d="M12 3a9 9 0 1 0 0 18c1 0 1.5-.8 1.5-1.5 0-.4-.2-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8z"/><circle data-fill cx="7.5" cy="10.5" r="1.2"/><circle data-fill cx="12" cy="7.5" r="1.2"/><circle data-fill cx="16.5" cy="10.5" r="1.2"/></symbol>
+        <symbol id="b-play" viewBox="0 0 24 24"><circle data-fill cx="12" cy="12" r="9" opacity="0.15"/><circle data-stroke cx="12" cy="12" r="9"/><path data-fill d="M10 8l6 4-6 4V8z"/></symbol>
+        <symbol id="b-funnel" viewBox="0 0 24 24"><path data-fill d="M3 4h18l-7 8v8l-4-2v-6L3 4z" opacity="0.18"/><path data-stroke d="M3 4h18l-7 8v8l-4-2v-6L3 4z"/></symbol>
+        <symbol id="b-phone" viewBox="0 0 24 24"><rect data-fill x="6" y="2" width="12" height="20" rx="2" opacity="0.15"/><rect data-stroke x="6" y="2" width="12" height="20" rx="2"/><path data-stroke d="M11 18h2"/></symbol>
+        <symbol id="b-code" viewBox="0 0 24 24"><rect data-fill x="2" y="3" width="20" height="18" rx="2" opacity="0.12"/><path data-stroke d="m8 8-4 4 4 4"/><path data-stroke d="m16 8 4 4-4 4"/><path data-stroke d="m13 6-2 12"/></symbol>
+        <symbol id="b-spark" viewBox="0 0 24 24"><circle data-fill cx="12" cy="12" r="3" opacity="0.3"/><path data-stroke d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></symbol>
+        <symbol id="b-wiki" viewBox="0 0 24 24"><path data-fill d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4zM20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z" opacity="0.18"/><path data-stroke d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path data-stroke d="M20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/></symbol>
+        <symbol id="b-tencent" viewBox="0 0 24 24"><path data-fill d="M12 3a9 9 0 0 0-7 14c-.5 1-.5 2 0 3 .6.8 1.5.6 2 0l.5-1c1.3.6 2.8 1 4.5 1s3.2-.4 4.5-1l.5 1c.5.6 1.4.8 2 0 .5-1 .5-2 0-3A9 9 0 0 0 12 3z" opacity="0.2"/><path data-stroke d="M12 3a9 9 0 0 0-7 14c-.5 1-.5 2 0 3 .6.8 1.5.6 2 0l.5-1c1.3.6 2.8 1 4.5 1s3.2-.4 4.5-1l.5 1c.5.6 1.4.8 2 0 .5-1 .5-2 0-3A9 9 0 0 0 12 3z"/><circle data-fill cx="9" cy="12" r="1.4"/><circle data-fill cx="15" cy="12" r="1.4"/></symbol>
+        <symbol id="b-bytedance" viewBox="0 0 24 24"><path data-fill d="M16 3v9.5a3.5 3.5 0 1 1-3.5-3.5h.5V6h-.5a6.5 6.5 0 1 0 6.5 6.5V3h-3z" opacity="0.25"/></symbol>
+        <symbol id="b-alibaba" viewBox="0 0 24 24"><path data-fill d="M4 12h16M12 4v16" stroke-width="2"/><path data-stroke d="M4 12c2-3 5-4 8-4s6 1 8 4M12 4c-2 3-5 4-8 4M12 4c2 3 5 4 8 4M4 20c2-3 5-4 8-4s6 1 8 4M12 20c-2-3-5-4-8-4M12 20c2-3 5-4 8-4" stroke-width="1.4"/></symbol>
+        <symbol id="b-huawei" viewBox="0 0 24 24"><path data-fill d="M12 2l3 5h-2v3h-2V7H9l3-5zM5 9c1-2 3-3 4-3v2c-1 0-2 1-3 2l-1-1zm14 0c-1-2-3-3-4-3v2c1 0 2 1 3 2l1-1zM3 14c0 5 4 8 9 8s9-3 9-8H3z" opacity="0.2"/><path data-stroke d="M12 2l3 5h-2v3h-2V7H9l3-5zM5 9c1-2 3-3 4-3v2c-1 0-2 1-3 2l-1-1zm14 0c-1-2-3-3-4-3v2c1 0 2 1 3 2l1-1zM3 14c0 5 4 8 9 8s9-3 9-8H3z"/></symbol>
+        <symbol id="b-xiaomi" viewBox="0 0 24 24"><rect data-fill x="3" y="9" width="18" height="6" rx="3" opacity="0.22"/><rect data-stroke x="3" y="9" width="18" height="6" rx="3"/><path data-stroke d="M7 9V6M11 9V6M15 9V6M19 9V6"/><circle data-fill cx="8.5" cy="18" r="1"/><circle data-fill cx="15.5" cy="18" r="1"/></symbol>
+        <symbol id="b-oppo" viewBox="0 0 24 24"><circle data-stroke cx="12" cy="12" r="9"/><path data-stroke d="M8 12a4 4 0 0 1 8 0"/></symbol>
+        <symbol id="b-vivo" viewBox="0 0 24 24"><path data-fill d="M3 6h18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" opacity="0.18"/><rect data-stroke x="3" y="6" width="18" height="12" rx="2"/><path data-stroke d="M8 12a4 4 0 0 1 8 0"/></symbol>
+        <symbol id="b-apple" viewBox="0 0 24 24"><path data-fill d="M17.5 12.5c0-2.5 2-3.5 2-3.5s-1-1.5-3-1.5c-1.5 0-2.5 1-3 1s-2-1-3.5-1c-2 0-4 1.5-4 4 0 3.5 3 7 4 7 .5 0 1.5-.5 2.5-.5s2 .5 2.5.5c1 0 2.5-3 2.5-6z" opacity="0.2"/><path data-stroke d="M12 7c-1-1.5 0-3 1-3.5"/><path data-stroke d="M17.5 12.5c0-2.5 2-3.5 2-3.5s-1-1.5-3-1.5c-1.5 0-2.5 1-3 1s-2-1-3.5-1c-2 0-4 1.5-4 4 0 3.5 3 7 4 7 .5 0 1.5-.5 2.5-.5s2 .5 2.5.5c1 0 2.5-3 2.5-6z"/></symbol>
+        <symbol id="b-wechat" viewBox="0 0 24 24"><path data-fill d="M9 4C5 4 2 6.5 2 10c0 2 1 3.5 3 4.5L4 17l3-1.5c.5.5 1 .5 2 .5 4 0 7-2.5 7-6s-3-6-7-6z" opacity="0.2"/><path data-stroke d="M9 4C5 4 2 6.5 2 10c0 2 1 3.5 3 4.5L4 17l3-1.5c.5.5 1 .5 2 .5 4 0 7-2.5 7-6s-3-6-7-6z"/><path data-fill d="M15 11c-3 0-5.5 1.5-5.5 4s2.5 4 5.5 4c.5 0 1 0 1.5-.5L19 20l-1-2c1.5-1 2.5-2 2.5-3.5 0-2.5-2.5-3.5-5.5-3.5z" opacity="0.2"/><path data-stroke d="M15 11c-3 0-5.5 1.5-5.5 4s2.5 4 5.5 4c.5 0 1 0 1.5-.5L19 20l-1-2c1.5-1 2.5-2 2.5-3.5 0-2.5-2.5-3.5-5.5-3.5z"/><circle data-fill cx="6.5" cy="9.5" r="0.8"/><circle data-fill cx="11" cy="9.5" r="0.8"/><circle data-fill cx="13.5" cy="14" r="0.8"/><circle data-fill cx="17" cy="14" r="0.8"/></symbol>
+        <symbol id="b-target" viewBox="0 0 24 24"><circle data-fill cx="12" cy="12" r="9" opacity="0.15"/><circle data-stroke cx="12" cy="12" r="9"/><circle data-stroke cx="12" cy="12" r="5"/><circle data-fill cx="12" cy="12" r="1.6"/></symbol>
+        <symbol id="b-kuaishou" viewBox="0 0 24 24"><path data-fill d="M5 4h14a2 2 0 0 1 2 2v9a7 7 0 1 1-14 0V6a2 2 0 0 1 2-2h2v6a3 3 0 0 0 6 0V4h-2v6a1 1 0 0 1-2 0V4H5z" opacity="0.2"/></symbol>
+        <symbol id="b-gaoding" viewBox="0 0 24 24"><circle data-fill cx="12" cy="12" r="9" opacity="0.18"/><circle data-stroke cx="12" cy="12" r="9"/><text data-text x="12" y="16" text-anchor="middle">G</text></symbol>
+        <symbol id="b-douyin" viewBox="0 0 24 24"><path data-fill d="M16 3v9.5a3.5 3.5 0 1 1-3.5-3.5h.5V6h-.5a6.5 6.5 0 1 0 6.5 6.5V3h-3z" opacity="0.2"/><path data-stroke d="M16 3v9.5a3.5 3.5 0 1 1-3.5-3.5h.5V6h-.5a6.5 6.5 0 1 0 6.5 6.5V3h-3z"/></symbol>
+        <symbol id="b-baidu" viewBox="0 0 24 24"><circle data-fill cx="12" cy="12" r="10" opacity="0.15"/><path data-fill d="M7 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM13 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM10 17h4v1h-4z"/></symbol>
+    </svg>
+    <a href="#main-content" class="skip-link">跳到主要内容</a>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo" aria-label="渠道建设部 首页">
+                    <svg class="logo-svg" width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="18" cy="18" r="15" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.35"/>
+                        <path d="M18 4 L18 14 M18 22 L18 32 M4 18 L14 18 M22 18 L32 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+                        <circle cx="18" cy="4.5" r="2" fill="currentColor"/>
+                        <circle cx="31.5" cy="18" r="2" fill="currentColor"/>
+                        <circle cx="18" cy="31.5" r="2" fill="currentColor"/>
+                        <circle cx="4.5" cy="18" r="2" fill="currentColor"/>
+                        <circle cx="18" cy="18" r="3.5" fill="currentColor"/>
+                    </svg>
+                    <span>渠道建设部</span>
+                </a>
+                <div class="search-wrapper">
+                    <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m20 20-3.5-3.5"></path>
+                        <path d="M11 8v3l2 1" stroke-width="1.5"></path>
+                    </svg>
+                    <input type="search" class="search-input" placeholder="搜索工具或平台…" aria-label="搜索站点" id="searchInput" name="q" autocomplete="off" spellcheck="false">
+                    <span class="search-shortcut">⌘&nbsp;K</span>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+                    <svg class="theme-icon sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main" id="main-content">
+        <div class="container">
+            <section class="hero" aria-labelledby="heroTitle">
+                <span class="hero-eyebrow">Channel · Tool Hub</span>
+                <h1 class="hero-title" id="heroTitle">渠道建设部<span class="hero-title-accent"> 工具导航</span></h1>
+                <p class="hero-subtitle">聚合数据汇报、素材创作、内容输出、广告投放与客户转化全链路工具，一站直达。</p>
+                <div class="hero-stats" aria-label="工具统计">
+                    <div class="hero-stat"><span class="hero-stat-num" id="statTools">0</span><span class="hero-stat-label">个工具</span></div>
+                    <div class="hero-stat-divider" aria-hidden="true"></div>
+                    <div class="hero-stat"><span class="hero-stat-num" id="statCats">6</span><span class="hero-stat-label">个分类</span></div>
+                    <div class="hero-stat-divider" aria-hidden="true"></div>
+                    <div class="hero-stat"><span class="hero-stat-num">24/7</span><span class="hero-stat-label">随时访问</span></div>
+                </div>
+            </section>
+            <nav class="category-nav" aria-label="分类筛选">
+                <button class="category-btn active" data-category="all" aria-pressed="true">全部</button>
+                <button class="category-btn" data-category="data" aria-pressed="false">数据与汇报</button>
+                <button class="category-btn" data-category="content" aria-pressed="false">素材创作</button>
+                <button class="category-btn" data-category="output" aria-pressed="false">内容输出</button>
+                <button class="category-btn" data-category="ads" aria-pressed="false">广告投放</button>
+                <button class="category-btn" data-category="conversion" aria-pressed="false">客户转化</button>
+                <button class="category-btn" data-category="tools" aria-pressed="false">其他工具</button>
+            </nav>
+
+        
+
+            <div class="content">
+                <!-- 数据与汇报 -->
+                <section class="section" data-category="data">
+                    <div class="section-header">
+                        <h2 class="section-title">数据与汇报</h2>
+                        <span class="section-count">09</span>
+                    </div>
+                    <div class="sites-grid">
+                        <a class="site-card" href="https://365.kdocs.cn/l/ciEouBcuKM8Q" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📊</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">周报</h3>
+                                    <p class="site-url">365.kdocs.cn</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">周报共享文档每周五更新，用于事业部内部汇报</p>
+                            <div class="site-meta">
+                                <span class="site-tag">文档</span>
+                                <span class="site-tag">汇报</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://rpt.swhysc.com/swhy/main" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📈</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">省心投</h3>
+                                    <p class="site-url">rpt.swhysc.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">要挂公司VPN，可从VPN或统一身份认证平台进入</p>
+                            <div class="site-meta">
+                                <span class="site-tag">数据</span>
+                                <span class="site-tag">VPN</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://cyhzzz.github.io/shengxintou-bi/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📊</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">省心投BI</h3>
+                                    <p class="site-url">cyhzzz.github.io</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">投放转化分析工具，覆盖内容平台与应用市场双链路，从曝光到开户一屏聚合</p>
+                            <div class="site-meta">
+                                <span class="site-tag">BI</span>
+                                <span class="site-tag">投放</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://wpsplus.com/join/g885lde?invtoken=Q1lI55qETWlCb29r" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📁</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">部门共享文件夹</h3>
+                                    <p class="site-url">wpsplus.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">部门共享文件夹（前置条件：启用WPS企业账号）</p>
+                            <div class="site-meta">
+                                <span class="site-tag">文档</span>
+                                <span class="site-tag">共享</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://365.kdocs.cn/l/cf2l5rEe2x7i" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">🎥</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">直播统计表</h3>
+                                    <p class="site-url">365.kdocs.cn</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">内容运营-直播统计表，数据源更新和仪表盘编辑各司其职</p>
+                            <div class="site-meta">
+                                <span class="site-tag">直播</span>
+                                <span class="site-tag">统计</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://365.kdocs.cn/l/ctFeOhXFwMnP" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📱</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">新媒体内容全量数据统计</h3>
+                                    <p class="site-url">365.kdocs.cn</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">内容运营-新媒体发布内容汇总表</p>
+                            <div class="site-meta">
+                                <span class="site-tag">新媒体</span>
+                                <span class="site-tag">统计</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://365.kdocs.cn/l/cc2YmfVEdfxs" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📕</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">小红书统计表</h3>
+                                    <p class="site-url">365.kdocs.cn</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">内容运营-小红书统计表，数据源更新和仪表盘编辑各司其职</p>
+                            <div class="site-meta">
+                                <span class="site-tag">小红书</span>
+                                <span class="site-tag">统计</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://365.kdocs.cn/l/cqAuMEs1OUV1" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📢</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">纯广告素材统计表</h3>
+                                    <p class="site-url">365.kdocs.cn</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">广告管理-广告素材和投放管理</p>
+                            <div class="site-meta">
+                                <span class="site-tag">广告</span>
+                                <span class="site-tag">素材</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://matrix.newrank.cn/media" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📊</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">新榜矩阵通</h3>
+                                    <p class="site-url">matrix.newrank.cn</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">新榜矩阵通，媒体矩阵管理平台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">数据</span>
+                                <span class="site-tag">矩阵</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- 素材创作 -->
+                <section class="section" data-category="content">
+                    <div class="section-header">
+                        <h2 class="section-title">素材创作</h2>
+                        <span class="section-count">05</span>
+                    </div>
+                    <div class="sites-grid">
+                        <a class="site-card" href="https://pc1beyczus.feishu.cn/base/YR7qbKlvwaCL0Ws7VljcEVmsnF9?table=blkyxaxbYKV2U6lp" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">🔍</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">竞品内容分析</h3>
+                                    <p class="site-url">feishu.cn</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">飞书多维表格实现的竞品内容管理小工具</p>
+                            <div class="site-meta">
+                                <span class="site-tag">飞书</span>
+                                <span class="site-tag">竞品</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://www.newrank.cn/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📊</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">新榜</h3>
+                                    <p class="site-url">newrank.cn</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">新媒体，找新榜</p>
+                            <div class="site-meta">
+                                <span class="site-tag">数据</span>
+                                <span class="site-tag">榜单</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://my.feishu.cn/wiki/QSZQw7u4OiUx64kafF4c6Nyonoh" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">🤖</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">AIGC全链路教程</h3>
+                                    <p class="site-url">my.feishu.cn</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">AIGC全链路教程，从创作到应用的完整指南</p>
+                            <div class="site-meta">
+                                <span class="site-tag">AIGC</span>
+                                <span class="site-tag">教程</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://swhyzq1972.qiye.gaoding.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">🎨</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">稿定设计</h3>
+                                    <p class="site-url">gaoding.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">一键搞定好设计</p>
+                            <div class="site-meta">
+                                <span class="site-tag">设计</span>
+                                <span class="site-tag">工具</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://365.kdocs.cn/l/cgEmXEEslFvc" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📋</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">UI需求与排期</h3>
+                                    <p class="site-url">365.kdocs.cn</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">UI设计师设计任务排期表</p>
+                            <div class="site-meta">
+                                <span class="site-tag">UI</span>
+                                <span class="site-tag">排期</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- 内容输出 -->
+                <section class="section" data-category="output">
+                    <div class="section-header">
+                        <h2 class="section-title">内容输出</h2>
+                        <span class="section-count">03</span>
+                    </div>
+                    <div class="sites-grid">
+                        <a class="site-card" href="https://channels.weixin.qq.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📺</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">视频号助手</h3>
+                                    <p class="site-url">channels.weixin.qq.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">微信视频号内容创作与管理平台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">视频号</span>
+                                <span class="site-tag">微信</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📰</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">公众号平台</h3>
+                                    <p class="site-url">mp.weixin.qq.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">微信公众号内容发布与管理后台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">公众号</span>
+                                <span class="site-tag">微信</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://pro.xiaohongshu.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📕</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">小红书专业号</h3>
+                                    <p class="site-url">pro.xiaohongshu.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">小红书内容创作与数据分析平台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">小红书</span>
+                                <span class="site-tag">创作</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- 广告投放 -->
+                <section class="section" data-category="ads">
+                    <div class="section-header">
+                        <h2 class="section-title">广告投放</h2>
+                        <span class="section-count">11</span>
+                    </div>
+                    <div class="sites-grid">
+                        <a class="site-card" href="https://ad.qq.com/atlas/50252079/overview/index?tab=adgroup" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">🐧</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">腾讯广告</h3>
+                                    <p class="site-url">ad.qq.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">腾讯广告投放管理平台（5025079账户）</p>
+                            <div class="site-meta">
+                                <span class="site-tag">腾讯</span>
+                                <span class="site-tag">广告</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://ad.xiaohongshu.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📕</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">小红书聚光</h3>
+                                    <p class="site-url">ad.xiaohongshu.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">小红书广告投放管理平台，让好产品自然发光</p>
+                            <div class="site-meta">
+                                <span class="site-tag">小红书</span>
+                                <span class="site-tag">投放</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://mcc.xiaohongshu.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">🌟</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">小红书星火</h3>
+                                    <p class="site-url">mcc.xiaohongshu.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">小红书星火，内容创作与推广平台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">小红书</span>
+                                <span class="site-tag">创作</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://business.oceanengine.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">🌊</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">巨量引擎</h3>
+                                    <p class="site-url">business.oceanengine.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">字节跳动广告投放平台，一站掌握好生意</p>
+                            <div class="site-meta">
+                                <span class="site-tag">字节</span>
+                                <span class="site-tag">广告</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://e.koubei.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">🗺️</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">阿里本地通</h3>
+                                    <p class="site-url">e.koubei.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">阿里巴巴本地生活服务平台（含高德地图推广）</p>
+                            <div class="site-meta">
+                                <span class="site-tag">阿里</span>
+                                <span class="site-tag">本地</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://ads.huaweiadx.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📱</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">华为应用市场</h3>
+                                    <p class="site-url">ads.huaweiadx.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">华为应用市场广告投放管理平台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">华为</span>
+                                <span class="site-tag">应用市场</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://ads.hihonor.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📱</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">荣耀应用市场</h3>
+                                    <p class="site-url">ads.hihonor.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">荣耀应用市场广告投放管理平台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">荣耀</span>
+                                <span class="site-tag">应用市场</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://ad.mi.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📱</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">小米应用市场</h3>
+                                    <p class="site-url">ad.mi.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">小米应用市场广告投放管理平台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">小米</span>
+                                <span class="site-tag">应用市场</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://oppomobile.adsight.net/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📱</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">Oppo应用市场</h3>
+                                    <p class="site-url">oppomobile.adsight.net</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">Oppo应用市场广告投放管理平台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">Oppo</span>
+                                <span class="site-tag">应用市场</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://ad.vivo.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📱</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">vivo应用市场</h3>
+                                    <p class="site-url">ad.vivo.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">vivo应用市场广告投放管理平台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">vivo</span>
+                                <span class="site-tag">应用市场</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://searchads.apple.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📱</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">苹果应用市场</h3>
+                                    <p class="site-url">searchads.apple.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">苹果应用市场广告投放管理平台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">苹果</span>
+                                <span class="site-tag">应用市场</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- 客户转化 -->
+                <section class="section" data-category="conversion">
+                    <div class="section-header">
+                        <h2 class="section-title">客户转化</h2>
+                        <span class="section-count">02</span>
+                    </div>
+                    <div class="sites-grid">
+                        <a class="site-card" href="https://admin.xiaoe-tech.com/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">🦢</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">小鹅通</h3>
+                                    <p class="site-url">xiaoe-tech.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">知识付费与私域运营平台，一分钟搭建专属知识平台</p>
+                            <div class="site-meta">
+                                <span class="site-tag">知识</span>
+                                <span class="site-tag">私域</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://doc.weixin.qq.com/sheet/e3_AbUAyAaaAPI3wqZTysxT0WOezY5MO?scode=AAoApQewAAsCYBagen" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📋</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">客户转化SOP</h3>
+                                    <p class="site-url">doc.weixin.qq.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">转化SOP第一稿，需不断更新，用于客户转化流程管理</p>
+                            <div class="site-meta">
+                                <span class="site-tag">SOP</span>
+                                <span class="site-tag">转化</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- 其他工具 -->
+                <section class="section" data-category="tools">
+                    <div class="section-header">
+                        <h2 class="section-title">其他工具</h2>
+                        <span class="section-count">07</span>
+                    </div>
+                    <div class="sites-grid">
+                        <a class="site-card" href="https://api-doc.xiaoe-tech.com/recall_scene/syn_user_info.html" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📚</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">小鹅通API</h3>
+                                    <p class="site-url">api-doc.xiaoe-tech.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">小鹅通私域直播、付费课程的API文档和Mapping机制</p>
+                            <div class="site-meta">
+                                <span class="site-tag">API</span>
+                                <span class="site-tag">文档</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://ad-market.xiaohongshu.com/docs-center?articleId=3180&bizType=943" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📖</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">小红书API</h3>
+                                    <p class="site-url">ad-market.xiaohongshu.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">小红书Marketing API文档中心</p>
+                            <div class="site-meta">
+                                <span class="site-tag">API</span>
+                                <span class="site-tag">营销</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://developers.tencent.com/doc/adsuite/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📖</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">腾讯广告API</h3>
+                                    <p class="site-url">developers.tencent.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">腾讯广告平台开发文档</p>
+                            <div class="site-meta">
+                                <span class="site-tag">API</span>
+                                <span class="site-tag">腾讯</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://open.oceanengine.com/doc/index.html" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📖</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">巨量引擎API</h3>
+                                    <p class="site-url">open.oceanengine.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">巨量引擎开放平台开发文档</p>
+                            <div class="site-meta">
+                                <span class="site-tag">API</span>
+                                <span class="site-tag">字节</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://ads.huawei.com/gpdp/helpCenter/docList" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📖</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">华为广告API</h3>
+                                    <p class="site-url">ads.huawei.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">华为广告平台开发文档</p>
+                            <div class="site-meta">
+                                <span class="site-tag">API</span>
+                                <span class="site-tag">华为</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://developer.apple.com/app-store/search-ads/" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📖</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">苹果搜索广告API</h3>
+                                    <p class="site-url">developer.apple.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">苹果搜索广告开发文档</p>
+                            <div class="site-meta">
+                                <span class="site-tag">API</span>
+                                <span class="site-tag">苹果</span>
+                            </div>
+                        </a>
+                        <a class="site-card" href="https://bytedance.larkoffice.com/wiki/RxVXweukSi7JtIkhOKBcuSlbnfCg" target="_blank" rel="noopener">
+                            <div class="site-header">
+                                <div class="site-favicon">📚</div>
+                                <div class="site-info">
+                                    <h3 class="site-name">部门知识库</h3>
+                                    <p class="site-url">bytedance.larkoffice.com</p>
+                                </div>
+                            </div>
+                            <p class="site-desc">渠道建设部飞书知识库，沉淀流程规范、经验复盘与协作文档</p>
+                            <div class="site-meta">
+                                <span class="site-tag">飞书</span>
+                                <span class="site-tag">知识库</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-content">
+                        <span>&copy; 2026 渠道建设部</span>
+                        <nav class="footer-links" aria-label="页脚导航">
+                            <a href="switcher.html" class="footer-link">切换皮肤</a>
+                            <a href="classic.html" class="footer-link">经典版</a>
+                            <a href="https://github.com/cyhzzz/ChannelDevelopmentDepartmentWiki" class="footer-link" target="_blank" rel="noopener">GitHub</a>
+                        </nav>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        'use strict';
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // 主题管理
+        const Theme = {
+            key: 'mono-theme',
+            init() {
+                const saved = localStorage.getItem(this.key);
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                this.set(saved || (prefersDark ? 'dark' : 'light'));
+                document.getElementById('themeToggle').addEventListener('click', () => this.toggle());
+            },
+            set(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem(this.key, theme);
+            },
+            toggle() {
+                const current = document.documentElement.getAttribute('data-theme');
+                this.set(current === 'dark' ? 'light' : 'dark');
+            }
+        };
+
+        // 分类筛选 + URL 状态同步
+        const Category = {
+            init() {
+                const buttons = document.querySelectorAll('.category-btn');
+                const sections = document.querySelectorAll('.section');
+                const apply = (cat) => {
+                    buttons.forEach(b => {
+                        const on = b.dataset.category === cat;
+                        b.classList.toggle('active', on);
+                        b.setAttribute('aria-pressed', on);
+                    });
+                    sections.forEach(sec => {
+                        sec.classList.toggle('hidden', !(cat === 'all' || sec.dataset.category === cat));
+                    });
+                };
+                buttons.forEach(btn => btn.addEventListener('click', () => {
+                    const cat = btn.dataset.category;
+                    apply(cat);
+                    const params = new URLSearchParams(location.search);
+                    if (cat === 'all') params.delete('cat'); else params.set('cat', cat);
+                    history.replaceState(null, '', params.toString() ? '?' + params : location.pathname);
+                }));
+                const params = new URLSearchParams(location.search);
+                const initial = params.get('cat');
+                if (initial && [...buttons].some(b => b.dataset.category === initial)) apply(initial);
+            }
+        };
+
+        // 搜索功能 + URL 状态同步
+        const Search = {
+            init() {
+                const input = document.getElementById('searchInput');
+                let t;
+                const run = (term) => {
+                    const cards = document.querySelectorAll('.site-card');
+                    const sections = document.querySelectorAll('.section');
+                    cards.forEach(card => {
+                        card.style.display = card.textContent.toLowerCase().includes(term) ? '' : 'none';
+                    });
+                    sections.forEach(sec => {
+                        const visible = sec.querySelectorAll('.site-card:not([style*="display: none"])').length;
+                        sec.style.display = visible > 0 ? '' : 'none';
+                    });
+                };
+                input.addEventListener('input', (e) => {
+                    const term = e.target.value.toLowerCase().trim();
+                    run(term);
+                    clearTimeout(t);
+                    t = setTimeout(() => {
+                        const params = new URLSearchParams(location.search);
+                        if (term) params.set('q', term); else params.delete('q');
+                        history.replaceState(null, '', params.toString() ? '?' + params : location.pathname);
+                    }, 300);
+                });
+                document.addEventListener('keydown', (e) => {
+                    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                        e.preventDefault();
+                        input.focus();
+                        input.select();
+                    }
+                });
+                const params = new URLSearchParams(location.search);
+                const q = params.get('q');
+                if (q) { input.value = q; run(q.toLowerCase().trim()); }
+            }
+        };
+
+        // IntersectionObserver 入场动画（可复用、可中断）
+        const Reveal = {
+            init() {
+                if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+                    document.querySelectorAll('.section, .site-card, .hero').forEach(el => el.classList.add('is-visible'));
+                    return;
+                }
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+                document.querySelectorAll('.section, .hero').forEach(el => io.observe(el));
+            }
+        };
+
+        // 统计数字 + 卡片光斑跟随 + favicon 字母徽标
+        const Stats = {
+            init() {
+                const total = document.querySelectorAll('.site-card').length;
+                const cats = document.querySelectorAll('.section[data-category]').length;
+                const elT = document.getElementById('statTools');
+                const elC = document.getElementById('statCats');
+                if (elC) elC.textContent = cats;
+                // 数字递增动画
+                if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+                    if (elT) elT.textContent = total;
+                } else {
+                    const animate = (el, target) => {
+                        if (!el) return;
+                        let start = null; const dur = 1200;
+                        const step = (ts) => {
+                            if (!start) start = ts;
+                            const p = Math.min((ts - start) / dur, 1);
+                            const eased = 1 - Math.pow(1 - p, 3);
+                            el.textContent = Math.round(target * eased);
+                            if (p < 1) requestAnimationFrame(step);
+                        };
+                        requestAnimationFrame(step);
+                    };
+                    const heroEl = document.querySelector('.hero');
+                    if (heroEl) {
+                        const io = new IntersectionObserver((entries) => {
+                            entries.forEach(e => {
+                                if (e.isIntersecting) { animate(elT, total); io.disconnect(); }
+                            });
+                        }, { threshold: 0.3 });
+                        io.observe(heroEl);
+                    }
+                }
+                // favicon → 按站名精确匹配（每个站点独立品牌色 + 独特图形）
+                const siteIconMap = {
+                    '周报':              { icon: 'b-doc',       color: '#3b82f6' },
+                    '省心投':            { icon: 'b-chart',     color: '#0ea5e9' },
+                    '省心投BI':          { icon: 'b-bi',        color: '#0ea5e9' },
+                    '部门共享文件夹':    { icon: 'b-folder',    color: '#22c55e' },
+                    '直播统计表':        { icon: 'b-live',      color: '#f43f5e' },
+                    '新媒体内容全量数据统计': { icon: 'b-chart',  color: '#ec4899' },
+                    '小红书统计表':      { icon: 'b-xhs',       color: '#ff2442' },
+                    '纯广告素材统计表':  { icon: 'b-megaphone', color: '#f97316' },
+                    '新榜矩阵通':        { icon: 'b-matrix',    color: '#06b6d4' },
+                    '竞品内容分析':      { icon: 'b-search',    color: '#8b5cf6' },
+                    '新榜':              { icon: 'b-chart',     color: '#06b6d4' },
+                    '小红书聚光':        { icon: 'b-spark',     color: '#ff2442' },
+                    'AIGC全链路教程':    { icon: 'b-bulb',      color: '#f59e0b' },
+                    '稿定设计':          { icon: 'b-gaoding',   color: '#7c3aed' },
+                    'UI需求与排期':      { icon: 'b-palette',   color: '#ec4899' },
+                    '视频号助手':        { icon: 'b-wechat',    color: '#07c160' },
+                    '公众号平台':        { icon: 'b-wechat',    color: '#07c160' },
+                    '小红书专业号':      { icon: 'b-xhs',       color: '#ff2442' },
+                    '腾讯广告':          { icon: 'b-tencent',   color: '#0052d9' },
+                    '小红书星火':        { icon: 'b-spark',     color: '#ff2442' },
+                    '巨量引擎':          { icon: 'b-douyin',    color: '#000000' },
+                    '阿里本地通':        { icon: 'b-alibaba',   color: '#ff6a00' },
+                    '华为应用市场':      { icon: 'b-huawei',    color: '#cf0a2c' },
+                    '荣耀应用市场':      { icon: 'b-huawei',    color: '#0066ff' },
+                    '小米应用市场':      { icon: 'b-xiaomi',    color: '#ff6700' },
+                    'Oppo应用市场':      { icon: 'b-oppo',      color: '#1aad19' },
+                    'vivo应用市场':      { icon: 'b-vivo',      color: '#415fff' },
+                    '苹果应用市场':      { icon: 'b-apple',     color: '#555555' },
+                    '小鹅通':            { icon: 'b-funnel',    color: '#ff5b29' },
+                    '客户转化SOP':       { icon: 'b-doc',       color: '#06b6d4' },
+                    '小鹅通API':         { icon: 'b-code',      color: '#ff5b29' },
+                    '小红书API':         { icon: 'b-code',      color: '#ff2442' },
+                    '腾讯广告API':       { icon: 'b-code',      color: '#0052d9' },
+                    '巨量引擎API':       { icon: 'b-code',      color: '#000000' },
+                    '华为广告API':       { icon: 'b-code',      color: '#cf0a2c' },
+                    '苹果搜索广告API':   { icon: 'b-code',      color: '#555555' },
+                    '部门知识库':        { icon: 'b-wiki',      color: '#3370ff' }
+                };
+                document.querySelectorAll('.site-card').forEach(card => {
+                    const fav = card.querySelector('.site-favicon');
+                    const name = (card.querySelector('.site-name') || {}).textContent || '';
+                    if (!fav) return;
+                    const conf = siteIconMap[name.trim()] || { icon: 'b-doc', color: '#4dabf7' };
+                    fav.style.setProperty('--brand', conf.color);
+                    fav.innerHTML = '<svg viewBox="0 0 24 24"><use href="#' + conf.icon + '"/></svg>';
+                });
+                // 卡片鼠标光斑跟随
+                if (prefersReducedMotion) return;
+                document.querySelectorAll('.site-card').forEach(card => {
+                    card.addEventListener('pointermove', (e) => {
+                        const r = card.getBoundingClientRect();
+                        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+                        card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+                    });
+                });
+            }
+        };
+
+        // 轻微克制背景粒子
+        const Particles = {
+            init() {
+                if (prefersReducedMotion) return;
+                const canvas = document.getElementById('bgCanvas');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                let w, h, dpr, particles = [], raf;
+                const COUNT = 36;
+                const resize = () => {
+                    dpr = Math.min(window.devicePixelRatio || 1, 2);
+                    w = canvas.width = innerWidth * dpr;
+                    h = canvas.height = innerHeight * dpr;
+                    canvas.style.width = innerWidth + 'px';
+                    canvas.style.height = innerHeight + 'px';
+                };
+                const color = () => {
+                    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    return dark ? '120, 180, 240' : '0, 100, 200';
+                };
+                const initParticles = () => {
+                    particles = [];
+                    for (let i = 0; i < COUNT; i++) {
+                        particles.push({
+                            x: Math.random() * w,
+                            y: Math.random() * h,
+                            r: (Math.random() * 1.4 + 0.6) * dpr,
+                            vx: (Math.random() - 0.5) * 0.12 * dpr,
+                            vy: (Math.random() - 0.5) * 0.12 * dpr,
+                            a: Math.random() * 0.25 + 0.08
+                        });
+                    }
+                };
+                const draw = () => {
+                    ctx.clearRect(0, 0, w, h);
+                    const c = color();
+                    for (const p of particles) {
+                        p.x += p.vx; p.y += p.vy;
+                        if (p.x < -10) p.x = w + 10; else if (p.x > w + 10) p.x = -10;
+                        if (p.y < -10) p.y = h + 10; else if (p.y > h + 10) p.y = -10;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fillStyle = 'rgba(' + c + ',' + p.a + ')';
+                        ctx.fill();
+                    }
+                    raf = requestAnimationFrame(draw);
+                };
+                resize(); initParticles(); draw();
+                window.addEventListener('resize', () => { resize(); initParticles(); });
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) { cancelAnimationFrame(raf); } else { raf = requestAnimationFrame(draw); }
+                });
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            Theme.init();
+            Category.init();
+            Search.init();
+            Stats.init();
+            Reveal.init();
+            Particles.init();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+[
+  {
+    "name": "周报",
+    "expectedIcon": "b-doc",
+    "expectedColor": "#3b82f6",
+    "note": "蓝色文档",
+    "found": true,
+    "actualIcon": "#b-doc",
+    "actualColor": "#3b82f6",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "小红书聚光",
+    "expectedIcon": "b-spark",
+    "expectedColor": "#ff2442",
+    "note": "红色星",
+    "found": true,
+    "actualIcon": "#b-spark",
+    "actualColor": "#ff2442",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "视频号助手",
+    "expectedIcon": "b-wechat",
+    "expectedColor": "#07c160",
+    "note": "绿色微信气泡",
+    "found": true,
+    "actualIcon": "#b-wechat",
+    "actualColor": "#07c160",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "公众号平台",
+    "expectedIcon": "b-wechat",
+    "expectedColor": "#07c160",
+    "note": "绿色微信气泡",
+    "found": true,
+    "actualIcon": "#b-wechat",
+    "actualColor": "#07c160",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "腾讯广告",
+    "expectedIcon": "b-tencent",
+    "expectedColor": "#0052d9",
+    "note": "蓝色企鹅",
+    "found": true,
+    "actualIcon": "#b-tencent",
+    "actualColor": "#0052d9",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "巨量引擎",
+    "expectedIcon": "b-douyin",
+    "expectedColor": "#000000",
+    "note": "黑色抖音音符",
+    "found": true,
+    "actualIcon": "#b-douyin",
+    "actualColor": "#000000",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "华为应用市场",
+    "expectedIcon": "b-huawei",
+    "expectedColor": "#cf0a2c",
+    "note": "红色花瓣",
+    "found": true,
+    "actualIcon": "#b-huawei",
+    "actualColor": "#cf0a2c",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "小米应用市场",
+    "expectedIcon": "b-xiaomi",
+    "expectedColor": "#ff6700",
+    "note": "橙色MI条",
+    "found": true,
+    "actualIcon": "#b-xiaomi",
+    "actualColor": "#ff6700",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "Oppo应用市场",
+    "expectedIcon": "b-oppo",
+    "expectedColor": "#1aad19",
+    "note": "绿色椭圆",
+    "found": true,
+    "actualIcon": "#b-oppo",
+    "actualColor": "#1aad19",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "vivo应用市场",
+    "expectedIcon": "b-vivo",
+    "expectedColor": "#415fff",
+    "note": "蓝色横条+绿弧",
+    "found": true,
+    "actualIcon": "#b-vivo",
+    "actualColor": "#415fff",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "苹果应用市场",
+    "expectedIcon": "b-apple",
+    "expectedColor": "#555555",
+    "note": "灰色苹果咬痕",
+    "found": true,
+    "actualIcon": "#b-apple",
+    "actualColor": "#555555",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "稿定设计",
+    "expectedIcon": "b-gaoding",
+    "expectedColor": "#7c3aed",
+    "note": "紫色G字母",
+    "found": true,
+    "actualIcon": "#b-gaoding",
+    "actualColor": "#7c3aed",
+    "iconOk": true,
+    "colorOk": true
+  },
+  {
+    "name": "阿里本地通",
+    "expectedIcon": "b-alibaba",
+    "expectedColor": "#ff6a00",
+    "note": "橙色阿里符号",
+    "found": true,
+    "actualIcon": "#b-alibaba",
+    "actualColor": "#ff6a00",
+    "iconOk": true,
+    "colorOk": true
+  }
+]

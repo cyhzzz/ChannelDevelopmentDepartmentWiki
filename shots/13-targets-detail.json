@@ -1,0 +1,106 @@
+[
+  {
+    "name": "周报",
+    "found": true,
+    "iconHref": "#b-doc",
+    "brand": "#3b82f6",
+    "bg": "color(srgb 0.892392 0.931373 0.995059)",
+    "color": "rgb(59, 130, 246)"
+  },
+  {
+    "name": "小红书聚光",
+    "found": true,
+    "iconHref": "#b-spark",
+    "brand": "#ff2442",
+    "bg": "color(srgb 1 0.879765 0.896235)",
+    "color": "rgb(255, 36, 66)"
+  },
+  {
+    "name": "视频号助手",
+    "found": true,
+    "iconHref": "#b-wechat",
+    "brand": "#07c160",
+    "bg": "color(srgb 0.863843 0.965961 0.912706)",
+    "color": "rgb(7, 193, 96)"
+  },
+  {
+    "name": "公众号平台",
+    "found": true,
+    "iconHref": "#b-wechat",
+    "brand": "#07c160",
+    "bg": "color(srgb 0.863843 0.965961 0.912706)",
+    "color": "rgb(7, 193, 96)"
+  },
+  {
+    "name": "腾讯广告",
+    "found": true,
+    "iconHref": "#b-tencent",
+    "brand": "#0052d9",
+    "bg": "color(srgb 0.86 0.90502 0.979137)",
+    "color": "rgb(0, 82, 217)"
+  },
+  {
+    "name": "巨量引擎",
+    "found": true,
+    "iconHref": "#b-douyin",
+    "brand": "#000000",
+    "bg": "color(srgb 0.86 0.86 0.86)",
+    "color": "rgb(0, 0, 0)"
+  },
+  {
+    "name": "华为应用市场",
+    "found": true,
+    "iconHref": "#b-huawei",
+    "brand": "#cf0a2c",
+    "bg": "color(srgb 0.973647 0.86549 0.884157)",
+    "color": "rgb(207, 10, 44)"
+  },
+  {
+    "name": "小米应用市场",
+    "found": true,
+    "iconHref": "#b-xiaomi",
+    "brand": "#ff6700",
+    "bg": "color(srgb 1 0.916549 0.86)",
+    "color": "rgb(255, 103, 0)"
+  },
+  {
+    "name": "Oppo应用市场",
+    "found": true,
+    "iconHref": "#b-oppo",
+    "brand": "#1aad19",
+    "bg": "color(srgb 0.874275 0.95498 0.873726)",
+    "color": "rgb(26, 173, 25)"
+  },
+  {
+    "name": "vivo应用市场",
+    "found": true,
+    "iconHref": "#b-vivo",
+    "brand": "#415fff",
+    "bg": "color(srgb 0.895686 0.912157 1)",
+    "color": "rgb(65, 95, 255)"
+  },
+  {
+    "name": "苹果应用市场",
+    "found": true,
+    "iconHref": "#b-apple",
+    "brand": "#555555",
+    "bg": "color(srgb 0.906667 0.906667 0.906667)",
+    "color": "rgb(85, 85, 85)"
+  },
+  {
+    "name": "稿定设计",
+    "found": true,
+    "iconHref": "#b-gaoding",
+    "brand": "#7c3aed",
+    "bg": "color(srgb 0.928078 0.891843 0.990118)",
+    "color": "rgb(124, 58, 237)"
+  },
+  {
+    "name": "阿里本地通",
+    "found": true,
+    "iconHref": "#b-alibaba",
+    "brand": "#ff6a00",
+    "bg": "color(srgb 1 0.918196 0.86)",
+    "color": "rgb(255, 106, 0)"
+  }
+]

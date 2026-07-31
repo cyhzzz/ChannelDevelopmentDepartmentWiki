@@ -1,0 +1,261 @@
+[
+  {
+    "name": "周报",
+    "brand": "#3b82f6",
+    "iconId": "#b-doc",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-doc\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "省心投",
+    "brand": "#0ea5e9",
+    "iconId": "#b-chart",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-chart\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "省心投BI",
+    "brand": "#0ea5e9",
+    "iconId": "#b-bi",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-bi\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "部门共享文件夹",
+    "brand": "#22c55e",
+    "iconId": "#b-folder",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-folder\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "直播统计表",
+    "brand": "#f43f5e",
+    "iconId": "#b-live",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-live\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "新媒体内容全量数据统计",
+    "brand": "#ec4899",
+    "iconId": "#b-chart",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-chart\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "小红书统计表",
+    "brand": "#ff2442",
+    "iconId": "#b-xhs",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-xhs\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "纯广告素材统计表",
+    "brand": "#f97316",
+    "iconId": "#b-megaphone",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-megaphone\"></use></sv",
+    "innerText": null
+  },
+  {
+    "name": "新榜矩阵通",
+    "brand": "#06b6d4",
+    "iconId": "#b-matrix",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-matrix\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "竞品内容分析",
+    "brand": "#8b5cf6",
+    "iconId": "#b-search",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-search\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "新榜",
+    "brand": "#06b6d4",
+    "iconId": "#b-chart",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-chart\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "AIGC全链路教程",
+    "brand": "#f59e0b",
+    "iconId": "#b-bulb",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-bulb\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "稿定设计",
+    "brand": "#7c3aed",
+    "iconId": "#b-gaoding",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-gaoding\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "UI需求与排期",
+    "brand": "#ec4899",
+    "iconId": "#b-palette",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-palette\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "视频号助手",
+    "brand": "#07c160",
+    "iconId": "#b-wechat",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-wechat\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "公众号平台",
+    "brand": "#07c160",
+    "iconId": "#b-wechat",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-wechat\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "小红书专业号",
+    "brand": "#ff2442",
+    "iconId": "#b-xhs",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-xhs\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "腾讯广告",
+    "brand": "#0052d9",
+    "iconId": "#b-tencent",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-tencent\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "小红书聚光",
+    "brand": "#ff2442",
+    "iconId": "#b-spark",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-spark\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "小红书星火",
+    "brand": "#ff2442",
+    "iconId": "#b-spark",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-spark\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "巨量引擎",
+    "brand": "#000000",
+    "iconId": "#b-douyin",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-douyin\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "阿里本地通",
+    "brand": "#ff6a00",
+    "iconId": "#b-alibaba",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-alibaba\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "华为应用市场",
+    "brand": "#cf0a2c",
+    "iconId": "#b-huawei",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-huawei\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "荣耀应用市场",
+    "brand": "#0066ff",
+    "iconId": "#b-huawei",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-huawei\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "小米应用市场",
+    "brand": "#ff6700",
+    "iconId": "#b-xiaomi",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-xiaomi\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "Oppo应用市场",
+    "brand": "#1aad19",
+    "iconId": "#b-oppo",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-oppo\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "vivo应用市场",
+    "brand": "#415fff",
+    "iconId": "#b-vivo",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-vivo\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "苹果应用市场",
+    "brand": "#555555",
+    "iconId": "#b-apple",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-apple\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "小鹅通",
+    "brand": "#ff5b29",
+    "iconId": "#b-funnel",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-funnel\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "客户转化SOP",
+    "brand": "#06b6d4",
+    "iconId": "#b-doc",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-doc\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "小鹅通API",
+    "brand": "#ff5b29",
+    "iconId": "#b-code",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-code\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "小红书API",
+    "brand": "#ff2442",
+    "iconId": "#b-code",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-code\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "腾讯广告API",
+    "brand": "#0052d9",
+    "iconId": "#b-code",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-code\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "巨量引擎API",
+    "brand": "#000000",
+    "iconId": "#b-code",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-code\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "华为广告API",
+    "brand": "#cf0a2c",
+    "iconId": "#b-code",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-code\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "苹果搜索广告API",
+    "brand": "#555555",
+    "iconId": "#b-code",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-code\"></use></svg>",
+    "innerText": null
+  },
+  {
+    "name": "部门知识库",
+    "brand": "#3370ff",
+    "iconId": "#b-wiki",
+    "innerHTML": "<svg viewBox=\"0 0 24 24\"><use href=\"#b-wiki\"></use></svg>",
+    "innerText": null
+  }
+]
