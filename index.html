@@ -23,6 +23,8 @@
             --text-primary: var(--shade-9); --text-secondary: var(--shade-7); --text-tertiary: var(--shade-5);
             --accent: #0066cc; --accent-hover: #0052a3; --accent-light: #e6f0ff;
             --accent-border: #b3d1ff; --link-color: #0066cc; --link-hover: #0052a3;
+            --aurora-1: rgba(0, 102, 204, 0.10); --aurora-2: rgba(120, 80, 200, 0.06); --aurora-3: rgba(0, 180, 200, 0.05);
+            --card-bg: rgba(255, 255, 255, 0.72); --card-border: rgba(0, 0, 0, 0.06); --card-hover-border: rgba(0, 102, 204, 0.35);
             --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px;
             --space-6: 28px; --space-7: 40px; --space-8: 56px; --space-9: 80px;
             --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
@@ -41,6 +43,8 @@
             --text-primary: #f0f0f0; --text-secondary: #a8a8a8; --text-tertiary: #6a6a6a;
             --accent: #4dabf7; --accent-hover: #74c0fc; --accent-light: rgba(77, 171, 247, 0.12);
             --accent-border: rgba(77, 171, 247, 0.35); --link-color: #4dabf7; --link-hover: #74c0fc;
+            --aurora-1: rgba(77, 171, 247, 0.14); --aurora-2: rgba(140, 100, 220, 0.10); --aurora-3: rgba(0, 200, 200, 0.08);
+            --card-bg: rgba(28, 28, 30, 0.66); --card-border: rgba(255, 255, 255, 0.08); --card-hover-border: rgba(77, 171, 247, 0.45);
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.3); --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
             --shadow-lg: 0 8px 24px rgba(0,0,0,0.5); --shadow-xl: 0 16px 40px rgba(0,0,0,0.6);
         }
@@ -50,30 +54,35 @@
         ::selection { background: var(--accent); color: white; }
         .container { max-width: 1440px; margin: 0 auto; padding: 0 var(--space-6); }
 
-        /* Background canvas */
-        .bg-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.55; transition: opacity var(--transition-slow); }
-        [data-theme="dark"] .bg-canvas { opacity: 0.4; }
+        /* Aurora 氛围光晕背景层 */
+        .bg-aurora { position: fixed; inset: 0; z-index: -2; pointer-events: none; background: var(--bg-primary); transition: background-color var(--transition-slow); }
+        .bg-aurora::before { content: ''; position: absolute; inset: 0; background:
+            radial-gradient(60% 50% at 18% 8%, var(--aurora-1) 0%, transparent 60%),
+            radial-gradient(55% 45% at 88% 12%, var(--aurora-3) 0%, transparent 65%),
+            radial-gradient(50% 60% at 50% 100%, var(--aurora-2) 0%, transparent 70%); }
+        .bg-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.4; transition: opacity var(--transition-slow); }
+        [data-theme="dark"] .bg-canvas { opacity: 0.32; }
 
         /* Skip link */
         .skip-link { position: absolute; left: -9999px; top: 0; z-index: 1000; padding: var(--space-2) var(--space-4); background: var(--accent); color: white; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500; }
         .skip-link:focus { left: var(--space-4); top: var(--space-4); }
 
         /* Header */
-        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255, 255, 255, 0.78); backdrop-filter: saturate(180%) blur(16px); -webkit-backdrop-filter: saturate(180%) blur(16px); border-bottom: 1px solid var(--border-light); transition: background-color var(--transition-base), border-color var(--transition-base); padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
-        [data-theme="dark"] .header { background: rgba(13, 13, 13, 0.78); }
+        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255, 255, 255, 0.72); backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px); border-bottom: 1px solid var(--card-border); transition: background-color var(--transition-base), border-color var(--transition-base); padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+        [data-theme="dark"] .header { background: rgba(13, 13, 13, 0.72); }
         .header-content { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: var(--space-5); }
         .logo { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; color: var(--text-primary); font-weight: 600; font-size: 1.1rem; letter-spacing: -0.01em; transition: color var(--transition-fast); }
         .logo:hover { color: var(--accent); }
-        .logo-svg { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+        .logo-svg { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
         .search-wrapper { flex: 1; max-width: 380px; position: relative; }
-        .search-input { width: 100%; height: 40px; padding: 0 var(--space-4) 0 40px; border: 1px solid var(--border-medium); border-radius: var(--radius-md); background: var(--bg-secondary); color: var(--text-primary); font-size: 0.9rem; font-family: var(--font-sans); transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast); outline: none; touch-action: manipulation; }
+        .search-input { width: 100%; height: 40px; padding: 0 var(--space-4) 0 40px; border: 1px solid var(--card-border); border-radius: var(--radius-md); background: var(--card-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--text-primary); font-size: 0.9rem; font-family: var(--font-sans); transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast); outline: none; touch-action: manipulation; }
         .search-input::placeholder { color: var(--text-tertiary); }
-        .search-input:hover { border-color: var(--text-tertiary); background: var(--bg-primary); }
-        .search-input:focus { border-color: var(--accent); background: var(--bg-primary); box-shadow: 0 0 0 3px var(--accent-light); }
+        .search-input:hover { border-color: var(--border-medium); }
+        .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
         .search-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--text-tertiary); pointer-events: none; }
-        .search-shortcut { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-tertiary); padding: 2px 6px; border: 1px solid var(--border-light); border-radius: var(--radius-sm); background: var(--bg-primary); pointer-events: none; }
-        .theme-toggle { width: 40px; height: 40px; border: 1px solid var(--border-medium); border-radius: var(--radius-md); background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast); position: relative; touch-action: manipulation; }
-        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+        .search-shortcut { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-tertiary); padding: 2px 6px; border: 1px solid var(--card-border); border-radius: var(--radius-sm); background: transparent; pointer-events: none; }
+        .theme-toggle { width: 40px; height: 40px; border: 1px solid var(--card-border); border-radius: var(--radius-md); background: var(--card-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast); position: relative; touch-action: manipulation; }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
         .theme-icon { position: absolute; transition: opacity var(--transition-base), transform var(--transition-base); }
         .theme-icon.sun { opacity: 1; transform: scale(1) rotate(0); }
         .theme-icon.moon { opacity: 0; transform: scale(0.5) rotate(-90deg); }
@@ -82,17 +91,31 @@
 
         /* Main */
         .main { padding-top: 64px; min-height: 100vh; display: flex; flex-direction: column; }
-        .category-nav { padding: var(--space-6) 0 var(--space-4); display: flex; justify-content: center; gap: var(--space-2); flex-wrap: wrap; }
-        .category-btn { padding: var(--space-2) var(--space-4); border: 1px solid var(--border-light); border-radius: var(--radius-md); background: var(--bg-primary); color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast); font-family: var(--font-sans); touch-action: manipulation; }
-        .category-btn:hover { color: var(--text-primary); border-color: var(--border-medium); background: var(--bg-hover); }
-        .category-btn.active { border-color: var(--text-primary); color: var(--text-primary); background: var(--bg-hover); font-weight: 600; }
+
+        /* Hero 品牌区 - 标志性视觉锚点 */
+        .hero { padding: var(--space-8) 0 var(--space-5); text-align: center; }
+        .hero-eyebrow { display: inline-flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--card-hover-border); border-radius: 999px; background: var(--accent-light); margin-bottom: var(--space-4); }
+        .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+        .hero-title { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: var(--space-3); text-wrap: balance; }
+        .hero-title-accent { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+        .hero-subtitle { font-size: 1rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto var(--space-5); line-height: 1.6; }
+        .hero-stats { display: flex; justify-content: center; gap: var(--space-6); flex-wrap: wrap; }
+        .hero-stat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .hero-stat-num { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 600; color: var(--text-primary); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+        .hero-stat-label { font-size: 0.72rem; color: var(--text-tertiary); letter-spacing: 0.04em; }
+        .hero-stat-divider { width: 1px; align-self: center; height: 28px; background: var(--card-border); }
+
+        .category-nav { padding: var(--space-4) 0 var(--space-5); display: flex; justify-content: center; gap: var(--space-2); flex-wrap: wrap; }
+        .category-btn { padding: var(--space-2) var(--space-4); border: 1px solid var(--card-border); border-radius: 999px; background: var(--card-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast); font-family: var(--font-sans); touch-action: manipulation; }
+        .category-btn:hover { color: var(--text-primary); border-color: var(--border-medium); }
+        .category-btn.active { border-color: var(--card-hover-border); color: var(--accent); background: var(--accent-light); font-weight: 600; }
         .content { flex: 1; padding-bottom: var(--space-8); }
         .section { margin-bottom: var(--space-7); }
 
-        /* Section Header - 克制：细灰线 + 中性计数 */
-        .section-header { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--border-light); }
-        .section-title { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); font-family: var(--font-sans); letter-spacing: -0.005em; }
-        .section-count { font-size: 0.72rem; color: var(--text-tertiary); font-family: var(--font-mono); font-weight: 500; font-variant-numeric: tabular-nums; }
+        /* Section Header - 强字体层次 */
+        .section-header { display: flex; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--card-border); }
+        .section-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); font-family: var(--font-sans); letter-spacing: -0.015em; }
+        .section-count { font-size: 0.75rem; color: var(--text-tertiary); font-family: var(--font-mono); font-weight: 500; font-variant-numeric: tabular-nums; }
 
         /* Sites Grid */
         .sites-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-3); }
@@ -101,22 +124,24 @@
         @media (max-width: 900px) { .sites-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 600px) { .sites-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-2); } }
 
-        /* Site Card - 克制：去顶条渐变、去 favicon 渐变背景、tag 中性化、hover 单一动作 */
-        .site-card { background: var(--bg-primary); padding: var(--space-4); text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: var(--space-2); transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base); position: relative; border: 1px solid var(--border-light); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
-        .site-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border-medium); }
-        .site-card:active { transform: translateY(0); }
-        .site-header { display: flex; align-items: center; gap: var(--space-3); }
-        .site-favicon { width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; background: var(--bg-secondary); flex-shrink: 0; line-height: 1; }
+        /* Site Card - 玻璃质感 */
+        .site-card { background: var(--card-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: var(--space-4); text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: var(--space-2); transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base); position: relative; border: 1px solid var(--card-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+        .site-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--card-hover-border); }
+        .site-card:active { transform: translateY(-1px); }
+        .site-card::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); background: radial-gradient(120px 80px at var(--mx, 50%) var(--my, 0%), var(--accent-light), transparent 70%); opacity: 0; transition: opacity var(--transition-base); pointer-events: none; }
+        .site-card:hover::after { opacity: 1; }
+        .site-header { display: flex; align-items: center; gap: var(--space-3); position: relative; z-index: 1; }
+        .site-favicon { width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; background: var(--bg-secondary); border: 1px solid var(--card-border); flex-shrink: 0; line-height: 1; }
         .site-info { flex: 1; min-width: 0; }
         .site-name { font-size: 0.92rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.005em; }
         .site-url { font-size: 0.7rem; color: var(--text-tertiary); font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color var(--transition-fast); }
-        .site-card:hover .site-url { color: var(--text-secondary); }
-        .site-desc { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: auto; }
-        .site-meta { display: flex; gap: var(--space-1); margin-top: var(--space-2); flex-wrap: wrap; }
-        .site-tag { font-size: 0.68rem; color: var(--text-secondary); font-family: var(--font-sans); font-weight: 500; padding: 1px 7px; background: var(--bg-secondary); border-radius: var(--radius-sm); border: 1px solid var(--border-light); }
+        .site-card:hover .site-url { color: var(--accent); }
+        .site-desc { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: auto; position: relative; z-index: 1; }
+        .site-meta { display: flex; gap: var(--space-1); margin-top: var(--space-2); flex-wrap: wrap; position: relative; z-index: 1; }
+        .site-tag { font-size: 0.66rem; color: var(--text-secondary); font-family: var(--font-sans); font-weight: 500; padding: 2px 8px; background: var(--bg-secondary); border-radius: 999px; border: 1px solid var(--card-border); }
 
         /* Footer */
-        .footer { border-top: 1px solid var(--border-light); padding: var(--space-5) 0; margin-top: auto; }
+        .footer { border-top: 1px solid var(--card-border); padding: var(--space-5) 0; margin-top: auto; }
         .footer-content { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--text-tertiary); }
         .footer-links { display: flex; gap: var(--space-5); }
         .footer-link { color: var(--text-secondary); text-decoration: none; transition: color var(--transition-fast); font-weight: 500; }
@@ -124,6 +149,11 @@
 
         /* Animations - IntersectionObserver 驱动，可复用、可中断 */
         @media (prefers-reduced-motion: no-preference) {
+            .hero > * { opacity: 0; transform: translateY(14px); transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); }
+            .hero.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
+            .hero.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 80ms; }
+            .hero.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 160ms; }
+            .hero.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 240ms; }
             .section { opacity: 0; transform: translateY(12px); transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out); }
             .section.is-visible { opacity: 1; transform: translateY(0); }
             .site-card { opacity: 0; transform: translateY(8px); transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out), box-shadow var(--transition-base), border-color var(--transition-base); }
@@ -160,6 +190,7 @@
     </style>
 </head>
 <body>
+    <div class="bg-aurora" aria-hidden="true"></div>
     <canvas class="bg-canvas" aria-hidden="true" id="bgCanvas"></canvas>
     <a href="#main-content" class="skip-link">跳到主要内容</a>
     <header class="header">
@@ -205,6 +236,18 @@
 
     <main class="main" id="main-content">
         <div class="container">
+            <section class="hero" aria-labelledby="heroTitle">
+                <span class="hero-eyebrow">Channel · Tool Hub</span>
+                <h1 class="hero-title" id="heroTitle">渠道建设部<span class="hero-title-accent"> 工具导航</span></h1>
+                <p class="hero-subtitle">聚合数据汇报、素材创作、内容输出、广告投放与客户转化全链路工具，一站直达。</p>
+                <div class="hero-stats" aria-label="工具统计">
+                    <div class="hero-stat"><span class="hero-stat-num" id="statTools">0</span><span class="hero-stat-label">个工具</span></div>
+                    <div class="hero-stat-divider" aria-hidden="true"></div>
+                    <div class="hero-stat"><span class="hero-stat-num" id="statCats">6</span><span class="hero-stat-label">个分类</span></div>
+                    <div class="hero-stat-divider" aria-hidden="true"></div>
+                    <div class="hero-stat"><span class="hero-stat-num">24/7</span><span class="hero-stat-label">随时访问</span></div>
+                </div>
+            </section>
             <nav class="category-nav" aria-label="分类筛选">
                 <button class="category-btn active" data-category="all" aria-pressed="true">全部</button>
                 <button class="category-btn" data-category="data" aria-pressed="false">数据与汇报</button>
@@ -906,7 +949,7 @@
         const Reveal = {
             init() {
                 if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-                    document.querySelectorAll('.section, .site-card').forEach(el => el.classList.add('is-visible'));
+                    document.querySelectorAll('.section, .site-card, .hero').forEach(el => el.classList.add('is-visible'));
                     return;
                 }
                 const io = new IntersectionObserver((entries) => {
@@ -917,7 +960,25 @@
                         }
                     });
                 }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-                document.querySelectorAll('.section').forEach(el => io.observe(el));
+                document.querySelectorAll('.section, .hero').forEach(el => io.observe(el));
+            }
+        };
+
+        // 统计数字 + 卡片光斑跟随
+        const Stats = {
+            init() {
+                const total = document.querySelectorAll('.site-card').length;
+                const el = document.getElementById('statTools');
+                if (el) el.textContent = total;
+                // 卡片鼠标光斑跟随
+                if (prefersReducedMotion) return;
+                document.querySelectorAll('.site-card').forEach(card => {
+                    card.addEventListener('pointermove', (e) => {
+                        const r = card.getBoundingClientRect();
+                        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+                        card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+                    });
+                });
             }
         };
 
@@ -980,6 +1041,7 @@
             Theme.init();
             Category.init();
             Search.init();
+            Stats.init();
             Reveal.init();
             Particles.init();
         });
