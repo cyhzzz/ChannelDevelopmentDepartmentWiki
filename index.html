@@ -138,7 +138,8 @@
         .site-card::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); background: radial-gradient(140px 100px at var(--mx, 50%) var(--my, 0%), var(--cat-soft), transparent 70%); opacity: 0; transition: opacity var(--transition-base); pointer-events: none; }
         .site-card:hover::after { opacity: 1; }
         .site-header { display: flex; align-items: center; gap: var(--space-3); position: relative; z-index: 1; }
-        .site-favicon { width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 700; font-family: var(--font-sans); color: var(--cat-color); background: var(--cat-soft); border: 1px solid color-mix(in srgb, var(--cat-color) 30%, transparent); flex-shrink: 0; line-height: 1; letter-spacing: -0.02em; transition: transform var(--transition-base), box-shadow var(--transition-base); }
+        .site-favicon { width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--cat-color); background: var(--cat-soft); border: 1px solid color-mix(in srgb, var(--cat-color) 30%, transparent); flex-shrink: 0; transition: transform var(--transition-base), box-shadow var(--transition-base); }
+        .site-favicon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .site-card:hover .site-favicon { transform: scale(1.06); box-shadow: 0 0 0 4px var(--cat-soft); }
         .site-info { flex: 1; min-width: 0; }
         .site-name { font-size: 0.92rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.005em; }
@@ -201,6 +202,24 @@
 <body>
     <div class="bg-aurora" aria-hidden="true"></div>
     <canvas class="bg-canvas" aria-hidden="true" id="bgCanvas"></canvas>
+    <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" focusable="false">
+        <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 3h9l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M8 13h8M8 17h5"/></symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 4-6"/></symbol>
+        <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></symbol>
+        <symbol id="i-live" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></symbol>
+        <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 4h12a1 1 0 0 1 1 1v15l-7-4-7 4V5a1 1 0 0 1 1-1z"/></symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+        <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+        <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1 0 1.5-.8 1.5-1.5 0-.4-.2-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="10.5" r="1"/><circle cx="12" cy="7.5" r="1"/><circle cx="16.5" cy="10.5" r="1"/></symbol>
+        <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4V8z"/></symbol>
+        <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M14 8a5 5 0 0 1 0 8"/><path d="M17 5a9 9 0 0 1 0 14"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+        <symbol id="i-funnel" viewBox="0 0 24 24"><path d="M3 4h18l-7 8v8l-4-2v-6L3 4z"/></symbol>
+        <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13 6-2 12"/></symbol>
+        <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/><circle cx="12" cy="12" r="3"/></symbol>
+        <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+    </svg>
     <a href="#main-content" class="skip-link">跳到主要内容</a>
     <header class="header">
         <div class="container">
@@ -1007,14 +1026,31 @@
                         io.observe(heroEl);
                     }
                 }
-                // emoji favicon → 站名首字字母徽标
+                // favicon → 按站名关键词匹配 SVG 图标
+                const iconMap = [
+                    [/周报|SOP|汇报/, 'i-doc'],
+                    [/统计|省心投|新榜|矩阵|数据/, 'i-chart'],
+                    [/文件夹|共享/, 'i-folder'],
+                    [/直播|视频号/, 'i-live'],
+                    [/小红书|新媒体|书|笔记/, 'i-bookmark'],
+                    [/竞品|分析/, 'i-search'],
+                    [/AIGC|教程|需求|排期/, 'i-bulb'],
+                    [/稿定|设计|UI/, 'i-palette'],
+                    [/公众号|视频/, 'i-play'],
+                    [/广告|腾讯广告|巨量|引擎|星火|本地通/, 'i-megaphone'],
+                    [/应用市场|华为|荣耀|小米|Oppo|vivo|苹果/, 'i-phone'],
+                    [/小鹅通|转化|客户/, 'i-funnel'],
+                    [/API/, 'i-code'],
+                    [/聚光/, 'i-spark'],
+                    [/目标|投放/, 'i-target']
+                ];
                 document.querySelectorAll('.site-card').forEach(card => {
                     const fav = card.querySelector('.site-favicon');
-                    const name = card.querySelector('.site-name');
-                    if (fav && name) {
-                        const ch = (name.textContent.trim()[0] || '?').toUpperCase();
-                        fav.textContent = ch;
-                    }
+                    const name = (card.querySelector('.site-name') || {}).textContent || '';
+                    if (!fav) return;
+                    let icon = 'i-grid';
+                    for (const [re, id] of iconMap) { if (re.test(name)) { icon = id; break; } }
+                    fav.innerHTML = '<svg><use href="#' + icon + '"/></svg>';
                 });
                 // 卡片鼠标光斑跟随
                 if (prefersReducedMotion) return;
