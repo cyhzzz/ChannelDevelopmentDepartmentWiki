@@ -24,7 +24,7 @@
             --accent: #0066cc; --accent-hover: #0052a3; --accent-light: #e6f0ff;
             --accent-border: #b3d1ff; --link-color: #0066cc; --link-hover: #0052a3;
             --aurora-1: rgba(0, 102, 204, 0.16); --aurora-2: rgba(120, 80, 200, 0.10); --aurora-3: rgba(0, 180, 200, 0.08);
-            --card-bg: rgba(255, 255, 255, 0.72); --card-border: rgba(0, 0, 0, 0.06); --card-hover-border: rgba(0, 102, 204, 0.35);
+            --card-bg: rgba(255, 255, 255, 0.72); --card-border: rgba(0, 0, 0, 0.10); --card-hover-border: rgba(0, 102, 204, 0.35);
             --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px;
             --space-6: 28px; --space-7: 40px; --space-8: 56px; --space-9: 80px;
             --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
@@ -138,9 +138,9 @@
         .site-card::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); background: radial-gradient(140px 100px at var(--mx, 50%) var(--my, 0%), var(--cat-soft), transparent 70%); opacity: 0; transition: opacity var(--transition-base); pointer-events: none; }
         .site-card:hover::after { opacity: 1; }
         .site-header { display: flex; align-items: center; gap: var(--space-3); position: relative; z-index: 1; }
-        .site-favicon { width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--cat-color); background: var(--cat-soft); border: 1px solid color-mix(in srgb, var(--cat-color) 30%, transparent); flex-shrink: 0; transition: transform var(--transition-base), box-shadow var(--transition-base); }
-        .site-favicon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .site-card:hover .site-favicon { transform: scale(1.06); box-shadow: 0 0 0 4px var(--cat-soft); }
+        .site-favicon { width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--cat-color); background: color-mix(in srgb, var(--cat-color) 10%, var(--bg-primary)); border: 1px solid color-mix(in srgb, var(--cat-color) 22%, transparent); flex-shrink: 0; transition: transform var(--transition-base), box-shadow var(--transition-base); }
+        .site-favicon svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+        .site-card:hover .site-favicon { transform: scale(1.06); box-shadow: 0 0 0 4px color-mix(in srgb, var(--cat-color) 14%, transparent); }
         .site-info { flex: 1; min-width: 0; }
         .site-name { font-size: 0.92rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.005em; }
         .site-url { font-size: 0.7rem; color: var(--text-tertiary); font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color var(--transition-fast); }
